@@ -1,32 +1,38 @@
 <!-- For the one who believed first. -->
 <!--
-  ZIROVA — index.html  |  Celestial Edition
-  ═══════════════════════════════════════════════════════════
-  FONTS:
-    Primary title : Tan Pearl — add via @font-face when available
-    Fallback title: Cormorant Garamond (Google Fonts) → serif
-    Body          : Jost (Google Fonts) → Inter → system-ui
-
-  TO SWAP WORDMARK SVG:
-    Replace <h1 class="wordmark"> text with:
-    <img src="/assets/zirova-wordmark.svg" alt="ZIROVA" class="wordmark-img" />
-    Add: .wordmark-img { height: clamp(48px, 8vw, 88px); width: auto; }
-
-  TO EDIT TAGLINE:
-    Find <p class="tagline"> and update inline text.
-
-  TO ADD A CTA LINK:
-    Inside <footer>, uncomment the <a class="cta-link"> block and update href.
-
-  OG IMAGE SPEC (1200 × 630px):
-    Background  : deep teal gradient #0F2F3A → #2C6A7A (170deg)
-    Wordmark    : "ZIROVA" centered, Cormorant Garamond, ~130px, #F3F1EC, ls 14px
-    Subtitle    : "Unwrap the extraordinary" ~38px, rgba(243,241,236,0.65), italic
-    Divider     : 180px gold line #C6A86B, centered below subtitle
-    Center glow : radial rgba(197,168,106,0.13)
-    Export as   : /assets/og-cover.jpg  (JPEG ≤ 200KB)
-    Update      : <meta property="og:image" content="/assets/og-cover.jpg" />
-  ═══════════════════════════════════════════════════════════
+  ╔══════════════════════════════════════════════════════════╗
+  ║  ZIROVA — Celestial Luxury Reveal  |  index.html         ║
+  ╠══════════════════════════════════════════════════════════╣
+  ║  FONTS                                                    ║
+  ║  Title   : Tan Pearl → add @font-face src below          ║
+  ║  Fallback: Cormorant Garamond (Google Fonts) → serif     ║
+  ║  Body    : Jost (Google Fonts) → Inter → system-ui       ║
+  ╠══════════════════════════════════════════════════════════╣
+  ║  WORDMARK SVG SWAP                                        ║
+  ║  Replace <h1 class="wordmark"> text with:                ║
+  ║  <img src="/assets/zirova.svg" alt="ZIROVA"              ║
+  ║       class="wordmark-img" />                            ║
+  ║  Add CSS: .wordmark-img { height: clamp(52px,8vw,92px);  ║
+  ║           width: auto; }                                 ║
+  ╠══════════════════════════════════════════════════════════╣
+  ║  TO EDIT TAGLINE                                          ║
+  ║  Find <p class="tagline"> and update inline text.        ║
+  ╠══════════════════════════════════════════════════════════╣
+  ║  TO ADD CTA LINK                                          ║
+  ║  Uncomment <a class="cta-link"> block inside <footer>.   ║
+  ╠══════════════════════════════════════════════════════════╣
+  ║  OG IMAGE SPEC  (1200 × 630 px)                          ║
+  ║  • Background : linear-gradient(168deg,                  ║
+  ║                 #0F2F3A 0%, #174A57 50%, #2C6A7A 100%)   ║
+  ║  • Wordmark   : "ZIROVA", Cormorant Garamond 300,        ║
+  ║                 ~130px, #F3F1EC, letter-spacing 14px     ║
+  ║  • Subtitle   : "Unwrap the extraordinary", italic,      ║
+  ║                 38px, rgba(243,241,236,0.65)             ║
+  ║  • Gold line  : 180px × 1px, #C6A86B, centered          ║
+  ║  • Halo glow  : radial rgba(197,168,106,0.13) at center  ║
+  ║  • Export     : /assets/og-cover.jpg  (≤ 200 KB)         ║
+  ║  • Then update: <meta property="og:image" ...>           ║
+  ╚══════════════════════════════════════════════════════════╝
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -44,7 +50,7 @@
   <meta property="og:image:width"  content="1200" />
   <meta property="og:image:height" content="630" />
 
-  <!-- Twitter Card -->
+  <!-- Twitter / X Card -->
   <meta name="twitter:card"        content="summary_large_image" />
   <meta name="twitter:title"       content="ZIROVA — Unwrap the extraordinary" />
   <meta name="twitter:description" content="Unwrap the extraordinary — private unveiling soon." />
@@ -56,27 +62,57 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400&display=swap" rel="stylesheet" />
 
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --bg-top:  #0F2F3A;
-      --bg-mid:  #174A57;
-      --bg-btm:  #2C6A7A;
-      --gold:    #C6A86B;
-      --ivory:   #F3F1EC;
-      --muted:   rgba(243, 241, 236, 0.62);
-      --max-w:   620px;
+    /* ══════════════════════════════════════════════
+       RESET
+    ══════════════════════════════════════════════ */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
-    html, body { height: 100%; }
+    /* ══════════════════════════════════════════════
+       TOKENS
+    ══════════════════════════════════════════════ */
+    :root {
+      --bg-top:   #0F2F3A;
+      --bg-mid:   #174A57;
+      --bg-btm:   #2C6A7A;
+      --gold:     #C6A86B;
+      --ivory:    #F3F1EC;
+      --muted:    rgba(243, 241, 236, 0.62);
+      --glow:     rgba(198, 168, 107, 0.10);
+      --max-w:    620px;
+
+      /* stagger delays */
+      --d1: 200ms;
+      --d2: 420ms;
+      --d3: 580ms;
+      --d4: 720ms;
+      --d5: 860ms;
+      --d6: 980ms;
+    }
+
+    /* ══════════════════════════════════════════════
+       BASE
+    ══════════════════════════════════════════════ */
+    html, body {
+      height: 100%;
+    }
 
     body {
       min-height: 100vh;
-      background: linear-gradient(168deg, var(--bg-top) 0%, var(--bg-mid) 50%, var(--bg-btm) 100%);
+      background: linear-gradient(
+        168deg,
+        var(--bg-top)  0%,
+        var(--bg-mid) 50%,
+        var(--bg-btm) 100%
+      );
       color: var(--ivory);
       font-family: 'Jost', 'Inter', system-ui, sans-serif;
       font-weight: 300;
       -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -84,197 +120,299 @@
       overflow-x: hidden;
     }
 
-    /* Mist / grain texture overlay — 4% */
+    /* ══════════════════════════════════════════════
+       ATMOSPHERIC LAYERS
+    ══════════════════════════════════════════════ */
+
+    /* Layer 1 — fine grain / mist (SVG noise, ~4% opacity) */
     body::after {
       content: '';
       position: fixed;
       inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='250'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.68' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='250' height='250' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-      background-size: 250px 250px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.70' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.038'/%3E%3C/svg%3E");
+      background-size: 300px 300px;
       pointer-events: none;
       z-index: 0;
     }
 
-    /* Soft radial halo glow — feels like distant celestial light */
+    /* Layer 2 — celestial halo glow, centered */
     body::before {
       content: '';
       position: fixed;
       inset: 0;
-      background: radial-gradient(
-        ellipse 54% 40% at 50% 43%,
-        rgba(197, 168, 106, 0.11) 0%,
-        rgba(197, 168, 106, 0.04) 46%,
-        transparent 72%
-      );
+      background:
+        radial-gradient(
+          ellipse 60% 44% at 50% 42%,
+          rgba(198, 168, 107, 0.13) 0%,
+          rgba(198, 168, 107, 0.05) 42%,
+          transparent 70%
+        ),
+        radial-gradient(
+          ellipse 30% 20% at 50% 42%,
+          rgba(198, 168, 107, 0.07) 0%,
+          transparent 100%
+        );
       pointer-events: none;
       z-index: 0;
     }
 
-    /* ── Fade-up ─────────────────────────────────── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(22px); }
-      to   { opacity: 1; transform: translateY(0); }
+    /* ══════════════════════════════════════════════
+       STAGGERED FADE-UP ANIMATIONS
+    ══════════════════════════════════════════════ */
+    @keyframes reveal {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
-    .stage {
-      animation: fadeUp 1100ms cubic-bezier(0.22, 1, 0.36, 1) both;
-      animation-delay: 80ms;
+    @keyframes revealLine {
+      from {
+        opacity: 0;
+        transform: scaleX(0.3);
+      }
+      to {
+        opacity: 1;
+        transform: scaleX(1);
+      }
     }
 
+    /* Base hidden state for all animated children */
+    .reveal {
+      opacity: 0;
+      animation: reveal 1100ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    .reveal-line {
+      opacity: 0;
+      animation: revealLine 900ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    .d1 { animation-delay: var(--d1); }
+    .d2 { animation-delay: var(--d2); }
+    .d3 { animation-delay: var(--d3); }
+    .d4 { animation-delay: var(--d4); }
+    .d5 { animation-delay: var(--d5); }
+    .d6 { animation-delay: var(--d6); }
+
+    /* Respect user preference — kill all animation */
     @media (prefers-reduced-motion: reduce) {
-      .stage { animation: none; }
+      .reveal,
+      .reveal-line {
+        animation: none;
+        opacity: 1;
+        transform: none;
+      }
     }
 
-    /* ── Layout ──────────────────────────────────── */
+    /* ══════════════════════════════════════════════
+       LAYOUT
+    ══════════════════════════════════════════════ */
     main {
       position: relative;
       z-index: 1;
       width: 100%;
       max-width: var(--max-w);
-      padding: 5rem 2.5rem 4rem;
+      padding: 5.5rem 2.5rem 4.5rem;
       text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0; /* spacing handled per-element */
     }
 
-    /* ── Wordmark ────────────────────────────────── */
+    /* ══════════════════════════════════════════════
+       WORDMARK
+       SVG swap: replace h1 text content with <img>
+    ══════════════════════════════════════════════ */
     .wordmark {
       font-family: 'Tan Pearl', 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
       font-weight: 300;
-      font-size: clamp(42px, 11vw, 92px);
-      letter-spacing: 10px;
+      font-size: clamp(44px, 11.5vw, 94px);
+      letter-spacing: clamp(8px, 1.8vw, 12px);
       text-transform: uppercase;
-      text-indent: 10px;
+      text-indent: clamp(8px, 1.8vw, 12px); /* optical tracking compensation */
       color: var(--ivory);
       line-height: 1;
-      margin-bottom: 2.6rem;
+      margin-bottom: 3rem;
     }
 
-    /* ── Tagline ─────────────────────────────────── */
+    /* ══════════════════════════════════════════════
+       TAGLINE
+       Edit text inside <p class="tagline">
+    ══════════════════════════════════════════════ */
     .tagline {
       font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
       font-weight: 300;
       font-style: italic;
-      font-size: clamp(19px, 4vw, 27px);
+      font-size: clamp(20px, 4.4vw, 29px);
       color: var(--ivory);
       line-height: 1.5;
-      letter-spacing: 0.5px;
-      margin-bottom: 2rem;
+      letter-spacing: 0.6px;
+      margin-bottom: 2.2rem;
     }
 
-    /* ── Status ──────────────────────────────────── */
+    /* ══════════════════════════════════════════════
+       STATUS LINE
+    ══════════════════════════════════════════════ */
     .status {
       font-family: 'Jost', 'Inter', system-ui, sans-serif;
-      font-size: clamp(8.5px, 1.7vw, 10.5px);
+      font-size: clamp(8px, 1.6vw, 10px);
       font-weight: 400;
-      letter-spacing: 5px;
+      letter-spacing: 5.5px;
       text-transform: uppercase;
       color: var(--muted);
-      margin-bottom: 2.6rem;
+      margin-bottom: 3rem;
     }
 
-    /* ── Champagne gold divider ───────────────────── */
+    /* ══════════════════════════════════════════════
+       CHAMPAGNE GOLD DIVIDER
+    ══════════════════════════════════════════════ */
     .divider {
       width: 80px;
       height: 1px;
       border: none;
-      background: linear-gradient(to right, transparent, var(--gold), transparent);
-      margin: 0 auto 2.6rem;
+      background: linear-gradient(
+        to right,
+        transparent,
+        var(--gold) 20%,
+        var(--gold) 80%,
+        transparent
+      );
+      margin-bottom: 3rem;
     }
 
-    /* ── Invite line ─────────────────────────────── */
-    .invite {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-style: italic;
-      font-weight: 300;
-      font-size: clamp(12px, 2vw, 14px);
-      color: var(--muted);
-      letter-spacing: 1.2px;
-      margin-bottom: 4.5rem;
-    }
-
-    /* ── Footer ──────────────────────────────────── */
-    footer { position: relative; z-index: 1; }
-
+    /* ══════════════════════════════════════════════
+       FOOTER COPY
+    ══════════════════════════════════════════════ */
     .footer-copy {
-      font-size: 9.5px;
+      font-family: 'Cormorant Garamond', Georgia, serif;
       font-weight: 300;
+      font-style: italic;
+      font-size: clamp(11px, 1.9vw, 13px);
+      color: var(--muted);
+      letter-spacing: 1.5px;
+      opacity: 0.8;
+    }
+
+    /* ══════════════════════════════════════════════
+       CTA LINK  — uncomment in HTML when ready
+       Update href to your URL
+    ══════════════════════════════════════════════ */
+    .cta-link {
+      display: inline-block;
+      margin-top: 2.2rem;
+      font-family: 'Jost', 'Inter', system-ui, sans-serif;
+      font-size: 9px;
+      font-weight: 400;
       letter-spacing: 3.5px;
       text-transform: uppercase;
       color: var(--muted);
-      opacity: 0.6;
-    }
-
-    /*
-      CTA LINK — uncomment + update href when ready:
-      <a href="https://instagram.com/zirova" class="cta-link"
-         target="_blank" rel="noopener noreferrer"
-         aria-label="Follow ZIROVA on Instagram">
-        Follow on Instagram
-      </a>
-    */
-    .cta-link {
-      display: inline-block;
-      margin-top: 2rem;
-      font-family: 'Jost', 'Inter', system-ui, sans-serif;
-      font-size: 9.5px;
-      font-weight: 400;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--muted);
       text-decoration: none;
-      border-bottom: 1px solid rgba(198, 168, 107, 0.3);
-      padding-bottom: 2px;
-      transition: color 260ms ease, border-color 260ms ease;
+      border-bottom: 1px solid rgba(198, 168, 107, 0.28);
+      padding-bottom: 3px;
+      transition: color 300ms ease, border-color 300ms ease;
     }
-    .cta-link:hover, .cta-link:focus { color: var(--gold); border-color: var(--gold); }
-    .cta-link:focus-visible { outline: 2px solid var(--gold); outline-offset: 5px; border-radius: 1px; }
+    .cta-link:hover,
+    .cta-link:focus {
+      color: var(--gold);
+      border-color: var(--gold);
+    }
+    .cta-link:focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 6px;
+      border-radius: 1px;
+    }
 
-    /* ── Mobile ──────────────────────────────────── */
+    /* ══════════════════════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════════════════════ */
     @media (max-width: 480px) {
-      main { padding: 3.5rem 1.6rem 3rem; }
-      .wordmark { letter-spacing: 7px; text-indent: 7px; }
-      .status { letter-spacing: 4px; }
+      main {
+        padding: 4rem 1.8rem 3.5rem;
+      }
+      .wordmark {
+        letter-spacing: 7px;
+        text-indent: 7px;
+      }
+      .status {
+        letter-spacing: 4.5px;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .wordmark {
+        font-size: 38px;
+        letter-spacing: 5px;
+        text-indent: 5px;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <main role="main" aria-label="ZIROVA — private celestial brand reveal">
-    <div class="stage">
+  <main role="main" aria-label="ZIROVA — private brand unveiling">
 
-      <!-- Wordmark — swap SVG by replacing h1 contents (see top-of-file notes) -->
-      <h1 class="wordmark" aria-label="ZIROVA">ZIROVA</h1>
+    <!-- ─────────────────────────────────────────────────────
+         WORDMARK
+         To swap SVG: replace h1 text with
+         <img src="/assets/zirova.svg" alt="ZIROVA" class="wordmark-img" />
+    ────────────────────────────────────────────────────── -->
+    <h1 class="wordmark reveal d1" aria-label="ZIROVA">ZIROVA</h1>
 
-      <!-- Tagline — edit text directly here -->
-      <p class="tagline" role="heading" aria-level="2">Unwrap the extraordinary ✨</p>
+    <!-- ─────────────────────────────────────────────────────
+         TAGLINE  — edit text here
+    ────────────────────────────────────────────────────── -->
+    <p class="tagline reveal d2" role="heading" aria-level="2">
+      Unwrap the extraordinary ✨
+    </p>
 
-      <!-- Status line -->
-      <p class="status" aria-label="Private unveiling coming soon">Private Unveiling Soon</p>
+    <!-- ─────────────────────────────────────────────────────
+         STATUS
+    ────────────────────────────────────────────────────── -->
+    <p class="status reveal d3" aria-label="Private unveiling coming soon">
+      Private&nbsp;Unveiling&nbsp;Soon
+    </p>
 
-      <!-- Champagne gold divider -->
-      <hr class="divider" aria-hidden="true" />
+    <!-- ─────────────────────────────────────────────────────
+         DIVIDER
+    ────────────────────────────────────────────────────── -->
+    <hr class="divider reveal-line d4" aria-hidden="true" />
 
-      <!-- Invite line — edit or remove freely -->
-      <p class="invite">Be part of the first chapter.</p>
+    <!-- ─────────────────────────────────────────────────────
+         FOOTER
+    ────────────────────────────────────────────────────── -->
+    <footer role="contentinfo">
+      <p class="footer-copy reveal d5">Crafted for meaningful moments.</p>
 
-      <!-- Footer -->
-      <footer>
-        <p class="footer-copy">Crafted for meaningful moments.</p>
-        <!--
-          CTA LINK — uncomment when ready:
-          <a href="https://instagram.com/zirova" class="cta-link" target="_blank" rel="noopener noreferrer">
-            Follow on Instagram
-          </a>
-        -->
-      </footer>
+      <!--
+        ── CTA LINK — uncomment + update href when ready ──
+        <a href="https://instagram.com/zirova"
+           class="cta-link reveal d6"
+           target="_blank"
+           rel="noopener noreferrer"
+           aria-label="Follow ZIROVA on Instagram">
+          Follow on Instagram
+        </a>
+      -->
+    </footer>
 
-    </div>
   </main>
 
+  <!--
+    Minimal JS — all animation is CSS-driven.
+    Honors prefers-reduced-motion via @media rule above.
+    Reserved for future lightweight enhancements only.
+  -->
   <script>
-    /* Animation is CSS-driven and honors prefers-reduced-motion above.
-       Reserved for future lightweight enhancements only. */
-    (function () { /* ZIROVA */ })();
+    (function () {
+      /* ZIROVA — nothing to see here. Yet. */
+    })();
   </script>
 
 </body>
