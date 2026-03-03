@@ -1,986 +1,582 @@
 <!-- For the one who believed first. -->
-<!--
-  ╔═══════════════════════════════════════════════════════════╗
-  ║  ZIROVA — Celestial Launch Experience  |  index.html      ║
-  ╠═══════════════════════════════════════════════════════════╣
-  ║  FONTS                                                    ║
-  ║  Wordmark : Tan Pearl → self-host via @font-face below    ║
-  ║  Fallback : Cormorant Garamond (Google Fonts)             ║
-  ║  Body     : Jost (Google Fonts) → Inter → system-ui       ║
-  ╠═══════════════════════════════════════════════════════════╣
-  ║  WORDMARK SVG SWAP                                        ║
-  ║  Replace <h1 class="wordmark"> text with:                 ║
-  ║  <img src="/assets/zirova.svg" alt="ZIROVA"               ║
-  ║       style="height:clamp(48px,8vw,92px);width:auto" />   ║
-  ╠═══════════════════════════════════════════════════════════╣
-  ║  EASTER EGG                                               ║
-  ║  Type  Z → I → R → O → V → A  on keyboard                ║
-  ║  A gold shimmer sweeps through the page once.             ║
-  ╠═══════════════════════════════════════════════════════════╣
-  ║  OG IMAGE SPEC  (1200 × 630 px)                           ║
-  ║  BG  : linear-gradient(168deg,#0F2F3A 0%,#2C6A7A 100%)   ║
-  ║  Text: "ZIROVA" Cormorant Garamond 300, #F3F1EC, ls 14px  ║
-  ║  Sub : italic ~38px rgba(243,241,236,0.65)                ║
-  ║  Line: 180px #C6A86B horizontal, centered                 ║
-  ║  Halo: radial rgba(197,168,106,0.15) at 50% 42%           ║
-  ║  Save: /assets/og-cover.jpg (JPEG ≤ 200KB)                ║
-  ╚═══════════════════════════════════════════════════════════╝
--->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>ZIROVA — Unwrap the extraordinary</title>
-  <meta name="description" content="Private unveiling soon. Crafted for meaningful moments." />
-
-  <!-- Open Graph -->
-  <meta property="og:type"         content="website" />
-  <meta property="og:title"        content="ZIROVA — Unwrap the extraordinary" />
-  <meta property="og:description"  content="Private unveiling soon. Crafted for meaningful moments." />
-  <meta property="og:image"        content="/assets/og-cover.jpg" />
-  <meta property="og:image:width"  content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta name="twitter:card"        content="summary_large_image" />
-  <meta name="twitter:title"       content="ZIROVA — Unwrap the extraordinary" />
-  <meta name="twitter:description" content="Private unveiling soon. Crafted for meaningful moments." />
-  <meta name="twitter:image"       content="/assets/og-cover.jpg" />
-
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400&display=swap" rel="stylesheet" />
-
+  <meta name="description" content="Private unveiling soon. Crafted for meaningful moments."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400&display=swap" rel="stylesheet"/>
   <style>
-    /* ══════════════════════════════════════════════
-       RESET
-    ══════════════════════════════════════════════ */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
 
-    /* ══════════════════════════════════════════════
-       DESIGN TOKENS
-    ══════════════════════════════════════════════ */
-    :root {
-      --bg-top:       #0D3D4F;
-      --bg-mid:       #1A5568;
-      --bg-btm:       #2E7A8A;
-      --bg-deep:      #0A2E3D;
-      --gold:         #C6A86B;
-      --gold-glow:    rgba(198,168,107,0.10);
-      --ivory:        #F3F1EC;
-      --muted:        rgba(243,241,236,0.62);
-      --max-w:        620px;
-      --ease:         cubic-bezier(0.22, 1, 0.36, 1);
-    }
-
-    /* ══════════════════════════════════════════════
-       BASE
-    ══════════════════════════════════════════════ */
-    html {
-      scroll-behavior: smooth;
-      height: 100%;
+    html, body {
+      width:100%; min-height:100%; overflow-x:hidden;
+      /* CHANGED: base background to mid-teal #0E2F3A */
+      background:#0E2F3A;
     }
 
     body {
-      min-height: 100vh;
-      background: none;
-      color: var(--ivory);
-      font-family: 'Jost', 'Inter', system-ui, sans-serif;
-      font-weight: 300;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      overflow-x: hidden;
+      font-family:'Jost',system-ui,sans-serif;
+      font-weight:300; color:#F0EBE0;
+      -webkit-font-smoothing:antialiased;
     }
 
-    /* Single seamless background — fixed behind everything */
-    #bg {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      background: linear-gradient(180deg, #1A4F62 0%, #255F72 45%, #337A8A 100%);
-      transition: opacity 1.4s ease;
+    /* Canvas — NO filter, NO overlay on top */
+    #stage {
+      position:fixed; inset:0; width:100%; height:100%; z-index:0;
     }
 
-    #bg-deep {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      background: linear-gradient(180deg, #0F3545 0%, #1A4A58 50%, #245F6E 100%);
-      opacity: 0;
-      transition: opacity 1.4s ease;
-    }
-
-    body.scroll-deep #bg-deep { opacity: 1; }
-
-    /* ══════════════════════════════════════════════
-       ATMOSPHERIC FIXED LAYERS
-    ══════════════════════════════════════════════ */
-
-    /* Grain mist — 3.8% */
+    /* Grain — barely there */
     #grain {
-      position: fixed;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.71' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23n)' opacity='0.038'/%3E%3C/svg%3E");
-      background-size: 260px 260px;
-      pointer-events: none;
-      z-index: 1;
+      position:fixed; inset:0; z-index:1; pointer-events:none;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.68' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23f)' opacity='0.035'/%3E%3C/svg%3E");
+      background-size:200px 200px;
     }
 
-    /* Static ambient halo */
-    #halo {
-      position: fixed;
-      inset: 0;
-      background: radial-gradient(
-        ellipse 58% 46% at 50% 40%,
-        rgba(198,168,107,0.10) 0%,
-        rgba(198,168,107,0.04) 44%,
-        transparent 70%
+    /* Soft vignette — opacity reduced to 0.48 */
+    #vig {
+      position:fixed; inset:0; z-index:2; pointer-events:none;
+      background:radial-gradient(
+        ellipse 80% 78% at 50% 50%,
+        transparent 40%,
+        rgba(4,10,18,0.30) 72%,
+        rgba(3,8,16,0.48) 100%   /* changed from 0.62 to 0.48 */
       );
-      pointer-events: none;
-      z-index: 1;
-      transition: opacity 1s ease;
     }
 
-    /* Cursor light */
-    #cursor-light {
-      position: fixed;
-      width: 560px;
-      height: 560px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(198,168,107,0.09) 0%, transparent 68%);
-      transform: translate(-50%, -50%);
-      pointer-events: none;
-      z-index: 2;
-      opacity: 0;
-      filter: blur(6px);
-      transition: opacity 800ms ease;
-      will-change: left, top;
+    #dust { position:fixed; inset:0; z-index:3; pointer-events:none; }
+
+    #cglow {
+      position:fixed; width:420px; height:420px; border-radius:50%;
+      background:radial-gradient(circle,rgba(180,148,88,0.14) 0%,transparent 65%);
+      transform:translate(-50%,-50%); pointer-events:none;
+      z-index:4; opacity:0; transition:opacity 800ms ease; will-change:left,top;
     }
 
-    /* Particle canvas */
-    #particles {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 2;
-    }
+    #egg-glow  { position:fixed;inset:0;z-index:7;pointer-events:none;opacity:0;background:radial-gradient(ellipse 60% 46% at 50% 38%,rgba(198,162,96,0.38) 0%,transparent 65%);transition:opacity 400ms ease; }
+    #egg-sweep { position:fixed;inset:0;z-index:8;pointer-events:none;opacity:0;background:linear-gradient(108deg,transparent 8%,rgba(198,162,96,0.06) 32%,rgba(198,162,96,0.22) 50%,rgba(198,162,96,0.06) 68%,transparent 92%);background-size:240% 100%;background-position:-120% 0; }
+    @keyframes eggSweep{0%{background-position:-120% 0;opacity:1;}85%{opacity:1;}100%{background-position:220% 0;opacity:0;}}
+    #egg-sweep.go{animation:eggSweep 1500ms cubic-bezier(0.22,1,0.36,1) forwards;}
 
-    /* Easter egg layers */
-    #egg-glow {
-      position: fixed;
-      inset: 0;
-      background: radial-gradient(ellipse 72% 60% at 50% 40%, rgba(198,168,107,0.22) 0%, transparent 70%);
-      pointer-events: none;
-      z-index: 3;
-      opacity: 0;
-      transition: opacity 500ms ease;
-    }
+    /* ── PAGE ── */
+    .page { position:relative; z-index:10; display:flex; flex-direction:column; }
 
-    #egg-shimmer {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 4;
-      opacity: 0;
-      background: linear-gradient(
-        108deg,
-        transparent 15%,
-        rgba(198,168,107,0.05) 38%,
-        rgba(198,168,107,0.16) 50%,
-        rgba(198,168,107,0.05) 62%,
-        transparent 85%
-      );
-      background-size: 220% 100%;
-      background-position: -110% 0;
-    }
-
-    @keyframes eggSweep {
-      0%   { background-position: -110% 0; opacity: 1; }
-      80%  { opacity: 1; }
-      100% { background-position: 220% 0; opacity: 0; }
-    }
-    #egg-shimmer.sweep {
-      animation: eggSweep 1600ms var(--ease) forwards;
-    }
-
-    /* ══════════════════════════════════════════════
-       INTRO ANIMATION SYSTEM
-    ══════════════════════════════════════════════ */
-    .z-intro {
-      opacity: 0;
-      transform: translateY(18px);
-    }
-    .z-intro-line {
-      opacity: 0;
-      transform: scaleX(0.15);
-      transform-origin: center;
-    }
-
-    @keyframes zRise {
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes zLine {
-      to { opacity: 1; transform: scaleX(1); }
-    }
-
-    .z-intro.go        { animation: zRise 1100ms var(--ease) forwards; }
-    .z-intro-line.go   { animation: zLine  900ms var(--ease) forwards; }
-
-    @media (prefers-reduced-motion: reduce) {
-      .z-intro, .z-intro-line {
-        animation: none !important;
-        opacity: 1 !important;
-        transform: none !important;
-      }
-      #particles { display: none; }
-      #egg-shimmer, #egg-glow { display: none; }
-    }
-
-    /* ══════════════════════════════════════════════
-       SCROLL REVEAL
-    ══════════════════════════════════════════════ */
-    .sr {
-      opacity: 0;
-      transform: translateY(26px);
-      transition: opacity 1100ms var(--ease), transform 1100ms var(--ease);
-    }
-    .sr.on {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .sr-delay-1 { transition-delay: 0ms; }
-    .sr-delay-2 { transition-delay: 160ms; }
-
-    @media (prefers-reduced-motion: reduce) {
-      .sr { opacity: 1 !important; transform: none !important; transition: none !important; }
-    }
-
-    /* ══════════════════════════════════════════════
-       HERO
-    ══════════════════════════════════════════════ */
     .hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      z-index: 5;
-      text-align: center;
-      padding: 6rem 2.5rem 5rem;
-      background: transparent;
+      width:100%; height:100vh;
+      display:flex; flex-direction:column;
+      align-items:center; justify-content:center;
+      text-align:center; padding:4rem 2.5rem;
+      position:relative;
     }
 
-    /* ── Wordmark ── */
-    .wordmark {
-      font-family: 'Tan Pearl', 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
-      font-weight: 300;
-      font-size: clamp(46px, 12vw, 98px);
-      letter-spacing: 10px;
-      text-indent: 10px;
-      text-transform: uppercase;
-      color: var(--ivory);
-      line-height: 1;
-      margin-bottom: 3.2rem;
-      position: relative;
-      display: inline-block;
-      cursor: default;
-      transition: letter-spacing 800ms var(--ease),
-                  text-indent   800ms var(--ease),
-                  text-shadow   800ms ease;
+    /* Intro */
+    .fi { opacity:0; transform:translateY(14px); }
+    .fl { opacity:0; transform:scaleX(0.06); transform-origin:center; }
+    @keyframes fi { to { opacity:1; transform:translateY(0); } }
+    @keyframes fl { to { opacity:1; transform:scaleX(1); } }
+    .fi.go { animation:fi 1100ms cubic-bezier(0.22,1,0.36,1) forwards; }
+    .fl.go { animation:fl  900ms cubic-bezier(0.22,1,0.36,1) forwards; }
+    @media(prefers-reduced-motion:reduce){
+      .fi,.fl{animation:none!important;opacity:1!important;transform:none!important;}
+      #dust,#cglow{display:none;}
     }
 
-    .wordmark::before {
-      content: '';
-      position: absolute;
-      inset: -50% -25%;
-      background: radial-gradient(ellipse 80% 65% at 50% 50%, rgba(198,168,107,0.15) 0%, transparent 70%);
-      opacity: 0;
-      transition: opacity 800ms ease;
-      pointer-events: none;
-      border-radius: 50%;
+    /* ── WORDMARK — large, full white, strong shadow ── */
+    .wm {
+      font-family:'Tan Pearl','Cormorant Garamond',Georgia,serif;
+      font-weight:300;
+      font-size:clamp(58px,14vw,118px);
+      letter-spacing:12px; text-indent:12px;
+      text-transform:uppercase;
+      color:#FFFFFF;
+      line-height:1;
+      margin-bottom:2.8rem;
+      cursor:default;
+      display:inline-block;
+      /* Glow shadow so it floats above anything */
+      text-shadow:
+        0 0 80px rgba(255,255,255,0.25),
+        0 2px 20px rgba(5,14,26,0.80);
+      transition:letter-spacing 800ms cubic-bezier(0.22,1,0.36,1),
+                 text-indent    800ms cubic-bezier(0.22,1,0.36,1),
+                 text-shadow    800ms ease,
+                 filter         800ms ease; /* added for smooth filter transition */
+    }
+    .wm:hover {
+      letter-spacing:18px; text-indent:18px;
+      text-shadow:
+        0 0 100px rgba(198,162,96,0.35),
+        0 0 50px rgba(255,255,255,0.20),
+        0 2px 20px rgba(5,14,26,0.80);
+      /* 🔥 Gold reaction on hover */
+      filter: drop-shadow(0 0 25px rgba(198,162,96,0.4));
+    }
+    .wm.egg {
+      letter-spacing:24px!important; text-indent:24px!important;
+      text-shadow:0 0 140px rgba(198,162,96,0.60),0 2px 20px rgba(5,14,26,0.80)!important;
     }
 
-    .wordmark:hover {
-      letter-spacing: 17px;
-      text-indent: 17px;
-      text-shadow: 0 0 60px rgba(198,168,107,0.20);
-    }
-    .wordmark:hover::before { opacity: 1; }
-
-    /* Easter egg wordmark state */
-    .wordmark.egg-active {
-      letter-spacing: 19px !important;
-      text-indent: 19px !important;
-      text-shadow: 0 0 100px rgba(198,168,107,0.40) !important;
-    }
-    .wordmark.egg-active::before { opacity: 1 !important; }
-
-    /* ── Tagline ── */
+    /* ── TAGLINE — bigger, pure white ── */
     .tagline {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-weight: 300;
-      font-style: italic;
-      font-size: clamp(20px, 4.4vw, 30px);
-      color: var(--ivory);
-      letter-spacing: 0.5px;
-      line-height: 1.5;
-      margin-bottom: 2.4rem;
+      font-family:'Cormorant Garamond',Georgia,serif;
+      font-weight:300; font-style:italic;
+      font-size:clamp(22px,5.2vw,36px);
+      color:#F8F4EC;
+      text-shadow:0 2px 20px rgba(5,14,26,0.75);
+      letter-spacing:0.5px; line-height:1.5;
+      margin-bottom:1.8rem;
     }
 
-    /* ── Status ── */
+    /* ── STATUS — bigger, visible ── */
     .status {
-      font-family: 'Jost', 'Inter', system-ui, sans-serif;
-      font-size: clamp(8px, 1.5vw, 10.5px);
-      font-weight: 400;
-      letter-spacing: 5.5px;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 3.2rem;
+      font-family:'Jost',system-ui,sans-serif;
+      font-size:clamp(10px,2vw,13px); font-weight:400;
+      letter-spacing:6px; text-transform:uppercase;
+      color:#E8E2D4;
+      text-shadow:0 1px 12px rgba(5,14,26,0.70);
+      margin-bottom:2.6rem;
     }
 
-    /* ── Divider ── */
+    /* ── DIVIDER ── */
     .divider {
-      width: 80px;
-      height: 1px;
-      border: none;
-      background: linear-gradient(to right, transparent, var(--gold) 18%, var(--gold) 82%, transparent);
-      margin: 0 auto 3.2rem;
-      position: relative;
-      overflow: visible;
+      width:72px; height:1px; border:none;
+      background:linear-gradient(to right,transparent,#C8A660 20%,#C8A660 80%,transparent);
+      margin:0 auto 2.6rem;
     }
 
-    /* One-time scroll shimmer on divider */
-    .divider::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 60%;
-      height: 100%;
-      background: linear-gradient(to right, transparent, rgba(255,220,140,0.8), transparent);
-      opacity: 0;
+    /* ── HERO COPY — bigger ── */
+    .hcopy {
+      font-family:'Cormorant Garamond',Georgia,serif;
+      font-style:italic; font-weight:300;
+      font-size:clamp(15px,2.4vw,18px);
+      color:#E2DDD1;
+      text-shadow:0 1px 14px rgba(5,14,26,0.65);
+      letter-spacing:1.2px; margin-bottom:2.8rem;
     }
 
-    @keyframes dividerShimmer {
-      0%   { left: -60%; opacity: 0; }
-      10%  { opacity: 1; }
-      90%  { opacity: 1; }
-      100% { left: 160%; opacity: 0; }
+    /* ── SOCIAL ── */
+    .soc-wrap { display:flex; flex-direction:column; align-items:center; gap:1.3rem; }
+    .soc-lbl  { font-family:'Jost',system-ui,sans-serif; font-size:10px; font-weight:400; letter-spacing:5px; text-transform:uppercase; color:#C8C0AE; }
+    .soc-row  { display:flex; gap:3rem; align-items:center; }
+    .soc-a {
+      display:flex; flex-direction:column; align-items:center; gap:9px;
+      color:#C8A660; text-decoration:none; opacity:0.85;
+      transition:opacity 350ms ease,filter 350ms ease,transform 350ms cubic-bezier(0.22,1,0.36,1);
     }
+    .soc-a:hover { opacity:1; filter:drop-shadow(0 0 12px rgba(200,166,96,0.50)); transform:translateY(-2px); }
+    .soc-a:focus-visible { outline:1px solid rgba(200,166,96,0.60); outline-offset:8px; }
+    .soc-a svg { width:26px; height:26px; fill:none; stroke:currentColor; stroke-width:1.3; stroke-linecap:round; stroke-linejoin:round; }
+    .soc-n { font-family:'Jost',system-ui,sans-serif; font-size:8.5px; font-weight:300; letter-spacing:4px; text-transform:uppercase; color:#BDB6A6; }
 
-    .divider.shimmer::after {
-      animation: dividerShimmer 1000ms var(--ease) forwards;
-    }
+    /* ── SCROLL CUE ── */
+    .cue { position:absolute; bottom:2rem; left:50%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:9px; opacity:0; transition:opacity 700ms ease; pointer-events:none; }
+    .cue.show { opacity:1; }
+    .cue-lbl  { font-family:'Jost',system-ui,sans-serif; font-size:10px; font-weight:400; letter-spacing:5px; text-transform:uppercase; color:#C8A660; }
+    .cue-line { width:1px; height:36px; background:linear-gradient(to bottom,#C8A660,transparent); }
+    .cue-arr  { opacity:0.9; }
+    @keyframes lP{0%,100%{opacity:0.4;transform:scaleY(0.75);}50%{opacity:1;transform:scaleY(1);}}
+    @keyframes aB{0%,100%{transform:translateY(0);opacity:0.6;}50%{transform:translateY(5px);opacity:1;}}
+    .cue.show .cue-line{animation:lP 2.2s ease-in-out infinite;}
+    .cue.show .cue-arr {animation:aB 1.9s ease-in-out infinite;}
 
-    /* ── Hero footer copy ── */
-    .hero-copy {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-style: italic;
-      font-weight: 300;
-      font-size: clamp(11.5px, 2vw, 13.5px);
-      color: var(--muted);
-      letter-spacing: 1.5px;
-    }
+    /* ── SCROLL SECTIONS ── */
+    .sect { width:100%; min-height:60vh; display:flex; align-items:center; justify-content:center; padding:5rem 2.5rem; text-align:center; background:transparent; }
+    .sect-in { max-width:580px; width:100%; }
+    .sr { opacity:0; transform:translateY(22px); transition:opacity 1100ms cubic-bezier(0.22,1,0.36,1),transform 1100ms cubic-bezier(0.22,1,0.36,1); }
+    .sr.on { opacity:1; transform:translateY(0); }
+    @media(prefers-reduced-motion:reduce){.sr{opacity:1!important;transform:none!important;transition:none!important;}}
 
-    /* ── Hero Social ── */
-    .hero-social {
-      margin-top: 2.8rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1.4rem;
+    .sh {
+      font-family:'Cormorant Garamond',Georgia,serif;
+      font-weight:300; font-style:italic;
+      font-size:clamp(30px,6vw,56px);
+      color:#F5F0E5;
+      text-shadow:0 2px 30px rgba(5,14,26,0.70);
+      line-height:1.35;
     }
+    .ss { margin-top:1.6rem; font-family:'Jost',system-ui,sans-serif; font-size:10.5px; font-weight:300; letter-spacing:5px; text-transform:uppercase; color:#C2BAA8; }
+    .sg { display:block; width:0; height:1px; background:linear-gradient(to right,transparent,#C8A660,transparent); margin:1.8rem auto 0; transition:width 1300ms cubic-bezier(0.22,1,0.36,1) 200ms; }
+    .sr.on .sg { width:90px; }
 
-    .hero-social-label {
-      font-family: 'Jost', system-ui, sans-serif;
-      font-size: 9px;
-      font-weight: 300;
-      letter-spacing: 5px;
-      text-transform: uppercase;
-      color: var(--muted);
-      opacity: 0.5;
-    }
+    .foot { position:relative; z-index:10; text-align:center; padding:1rem 2rem 3rem; }
+    .foot p { font-size:9px; letter-spacing:3px; text-transform:uppercase; color:rgba(200,192,178,0.40); }
 
-    .hero-social-icons {
-      display: flex;
-      gap: 2.8rem;
-      align-items: center;
+    @media(max-width:480px){
+      .hero{padding:3.5rem 1.8rem;}
+      .wm{letter-spacing:8px;text-indent:8px;font-size:clamp(48px,13vw,100px);}
+      .status{letter-spacing:4px;}
+      .sect{min-height:50vh;padding:4rem 1.8rem;}
     }
-
-    .hero-social-link {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 9px;
-      color: var(--gold);
-      text-decoration: none;
-      opacity: 0.7;
-      transition: opacity 400ms ease, filter 400ms ease, transform 400ms var(--ease);
-      position: relative;
-    }
-
-    .hero-social-link::before {
-      content: '';
-      position: absolute;
-      inset: -14px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(198,168,107,0.18) 0%, transparent 70%);
-      opacity: 0;
-      transition: opacity 400ms ease;
-    }
-
-    .hero-social-link:hover {
-      opacity: 1;
-      filter: drop-shadow(0 0 10px rgba(198,168,107,0.35));
-      transform: translateY(-2px);
-    }
-    .hero-social-link:hover::before { opacity: 1; }
-
-    .hero-social-link:focus-visible {
-      outline: 1px solid rgba(198,168,107,0.55);
-      outline-offset: 8px;
-      border-radius: 4px;
-    }
-
-    .hero-social-link svg {
-      width: 28px;
-      height: 28px;
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 1.2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    .hero-social-name {
-      font-family: 'Jost', system-ui, sans-serif;
-      font-size: 8px;
-      font-weight: 300;
-      letter-spacing: 3.5px;
-      text-transform: uppercase;
-      color: var(--muted);
-      opacity: 0.6;
-    }
-
-    /* ── Scroll cue ── */
-    .scroll-cue {
-      position: absolute;
-      bottom: 2.8rem;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 9px;
-      opacity: 0;
-      transition: opacity 700ms ease;
-      pointer-events: none;
-    }
-    .scroll-cue.show { opacity: 1; }
-    .scroll-cue.hide { opacity: 0; }
-
-    .scroll-cue-label {
-      font-size: 7.5px;
-      letter-spacing: 4.5px;
-      text-transform: uppercase;
-      color: var(--muted);
-      opacity: 0.45;
-    }
-
-    .scroll-cue-bar {
-      width: 1px;
-      height: 34px;
-      background: linear-gradient(to bottom, rgba(198,168,107,0.7), transparent);
-    }
-
-    @keyframes scrollBarPulse {
-      0%, 100% { opacity: 0.25; transform: scaleY(0.85); }
-      50%       { opacity: 0.9;  transform: scaleY(1); }
-    }
-    .scroll-cue.show .scroll-cue-bar {
-      animation: scrollBarPulse 2.2s ease-in-out infinite;
-    }
-
-    /* ══════════════════════════════════════════════
-       SCROLL SECTIONS
-    ══════════════════════════════════════════════ */
-    .scroll-section {
-      position: relative;
-      z-index: 5;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 55vh;
-      padding: 5.5rem 2.5rem;
-      text-align: center;
-      background: transparent;
-    }
-
-    .s-inner { max-width: var(--max-w); width: 100%; }
-
-    .s-heading {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-weight: 300;
-      font-style: italic;
-      font-size: clamp(27px, 5.5vw, 50px);
-      color: var(--ivory);
-      letter-spacing: 0.8px;
-      line-height: 1.35;
-    }
-
-    .s-sub {
-      margin-top: 1.8rem;
-      font-family: 'Jost', system-ui, sans-serif;
-      font-size: clamp(8px, 1.5vw, 9.5px);
-      font-weight: 300;
-      letter-spacing: 5px;
-      text-transform: uppercase;
-      color: var(--muted);
-      opacity: 0.55;
-    }
-
-    /* Thin accent line on section 3 */
-    .section-3-line {
-      display: block;
-      width: 0;
-      height: 1px;
-      background: linear-gradient(to right, transparent, var(--gold), transparent);
-      margin: 1.6rem auto 0;
-      transition: width 1200ms var(--ease) 200ms;
-    }
-    .sr.on .section-3-line { width: 100px; }
-
-    /* ══════════════════════════════════════════════
-       SOCIAL BAR
-    ══════════════════════════════════════════════ */
-    .social-bar {
-      position: relative;
-      z-index: 5;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1.8rem;
-      padding: 3rem 2rem 5.5rem;
-    }
-
-    .social-label {
-      font-family: 'Jost', system-ui, sans-serif;
-      font-size: 8.5px;
-      font-weight: 300;
-      letter-spacing: 5px;
-      text-transform: uppercase;
-      color: var(--muted);
-      opacity: 0.45;
-    }
-
-    .social-icons {
-      display: flex;
-      gap: 2.4rem;
-      align-items: center;
-    }
-
-    .social-link {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 38px;
-      height: 38px;
-      color: var(--gold);
-      opacity: 0.65;
-      transition: opacity 400ms ease, filter 400ms ease;
-      text-decoration: none;
-      position: relative;
-    }
-
-    .social-link::before {
-      content: '';
-      position: absolute;
-      inset: -8px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(198,168,107,0.15) 0%, transparent 70%);
-      opacity: 0;
-      transition: opacity 400ms ease;
-    }
-
-    .social-link:hover {
-      opacity: 1;
-      filter: drop-shadow(0 0 8px rgba(198,168,107,0.30));
-    }
-    .social-link:hover::before { opacity: 1; }
-    .social-link:focus-visible {
-      outline: 1px solid rgba(198,168,107,0.5);
-      outline-offset: 6px;
-      border-radius: 3px;
-    }
-
-    .social-link svg {
-      width: 20px;
-      height: 20px;
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 1.3;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    /* ══════════════════════════════════════════════
-       SITE FOOTER
-    ══════════════════════════════════════════════ */
-    .site-footer {
-      position: relative;
-      z-index: 5;
-      text-align: center;
-      padding: 0 2rem 4rem;
-      background: transparent;
-    }
-
-    .site-footer p {
-      font-size: 8px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--muted);
-      opacity: 0.35;
-    }
-
-    /* ══════════════════════════════════════════════
-       MOBILE
-    ══════════════════════════════════════════════ */
-    @media (max-width: 480px) {
-      .hero { padding: 4.5rem 1.8rem 5rem; }
-      .wordmark { letter-spacing: 7px; text-indent: 7px; }
-      .wordmark:hover { letter-spacing: 11px; text-indent: 11px; }
-      .wordmark.egg-active { letter-spacing: 12px !important; text-indent: 12px !important; }
-      .status { letter-spacing: 4px; }
-      .scroll-section { padding: 4rem 1.8rem; min-height: 45vh; }
-      .hero-social-link svg { width: 26px; height: 26px; }
-      .hero-social-icons { gap: 2.4rem; }
-    }
-
-    @media (max-width: 360px) {
-      .wordmark { font-size: 38px; }
-    }
+    @media(max-width:360px){ .wm{font-size:40px;} }
   </style>
 </head>
-
 <body>
+  <canvas id="stage" aria-hidden="true"></canvas>
+  <div    id="grain" aria-hidden="true"></div>
+  <div    id="vig"   aria-hidden="true"></div>
+  <canvas id="dust"  aria-hidden="true"></canvas>
+  <div    id="cglow" aria-hidden="true"></div>
+  <div    id="egg-glow"  aria-hidden="true"></div>
+  <div    id="egg-sweep" aria-hidden="true"></div>
 
-  <!-- ── Fixed seamless background ── -->
-  <div id="bg"      aria-hidden="true"></div>
-  <div id="bg-deep" aria-hidden="true"></div>
-
-  <!-- ── Atmospheric fixed layers ── -->
-  <div id="grain"         aria-hidden="true"></div>
-  <div id="halo"          aria-hidden="true"></div>
-  <div id="cursor-light"  aria-hidden="true"></div>
-  <canvas id="particles"  aria-hidden="true"></canvas>
-  <div id="egg-glow"      aria-hidden="true"></div>
-  <div id="egg-shimmer"   aria-hidden="true"></div>
-
-  <!-- ══════════════════════════════════════════════
-       HERO
-  ══════════════════════════════════════════════ -->
-  <section class="hero" role="banner" aria-label="ZIROVA — celestial brand reveal">
-
-    <!-- Wordmark: swap SVG — see top-of-file comment -->
-    <h1 class="wordmark z-intro" aria-label="ZIROVA">ZIROVA</h1>
-
-    <!-- Tagline: edit text here -->
-    <p class="tagline z-intro" role="heading" aria-level="2">
-      Unwrap the extraordinary&nbsp;✨
-    </p>
-
-    <p class="status z-intro" aria-label="Private unveiling coming soon">
-      Private&nbsp;Unveiling&nbsp;Soon
-    </p>
-
-    <hr class="divider z-intro-line" id="hero-divider" aria-hidden="true" />
-
-    <p class="hero-copy z-intro">Crafted for meaningful moments.</p>
-
-    <!-- Social icons — in hero -->
-    <div class="hero-social z-intro" aria-label="Follow ZIROVA">
-      <p class="hero-social-label">Enter our world.</p>
-      <div class="hero-social-icons">
-
-        <!-- Instagram -->
-        <a href="https://www.instagram.com/zirova.in/"
-           class="hero-social-link"
-           target="_blank"
-           rel="noopener noreferrer"
-           aria-label="ZIROVA on Instagram">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-            <circle cx="12" cy="12" r="4.5"/>
-            <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
-          </svg>
-          <span class="hero-social-name">Instagram</span>
-        </a>
-
-        <!-- YouTube -->
-        <a href="https://www.youtube.com/@Zirova_Official"
-           class="hero-social-link"
-           target="_blank"
-           rel="noopener noreferrer"
-           aria-label="ZIROVA on YouTube">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <rect x="2" y="5" width="20" height="14" rx="4"/>
-            <polygon points="10,8.5 10,15.5 16,12" fill="currentColor" stroke="none"/>
-          </svg>
-          <span class="hero-social-name">YouTube</span>
-        </a>
-
+  <div class="page">
+    <section class="hero" role="banner">
+      <h1 class="wm fi" aria-label="ZIROVA">ZIROVA</h1>
+      <p class="tagline fi">Unwrap the extraordinary</p>  <!-- ✨ removed -->
+      <p class="status fi">Private&nbsp;Unveiling&nbsp;Soon</p>
+      <hr class="divider fl" aria-hidden="true"/>
+      <p class="hcopy fi">Crafted for meaningful moments.</p>
+      <div class="soc-wrap fi">
+        <p class="soc-lbl">Enter our world.</p>
+        <div class="soc-row">
+          <a href="https://www.instagram.com/zirova.in/" class="soc-a" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5.5"/><circle cx="12" cy="12" r="4.4"/><circle cx="17.4" cy="6.6" r="0.95" fill="currentColor" stroke="none"/></svg>
+            <span class="soc-n">Instagram</span>
+          </a>
+          <a href="https://www.youtube.com/@Zirova_Official" class="soc-a" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+            <svg viewBox="0 0 24 24"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><polygon points="10,9 10,15.2 15.8,12" fill="currentColor" stroke="none"/></svg>
+            <span class="soc-n">YouTube</span>
+          </a>
+        </div>
       </div>
-    </div>
-
-    <!-- Scroll cue -->
-    <div class="scroll-cue" id="scroll-cue" aria-hidden="true">
-      <div class="scroll-cue-bar"></div>
-      <span class="scroll-cue-label">Scroll</span>
-    </div>
-
-  </section>
-
-  <!-- ══════════════════════════════════════════════
-       SCROLL SECTION 1
-  ══════════════════════════════════════════════ -->
-  <section class="scroll-section" aria-label="Every piece begins with intention">
-    <div class="s-inner">
-      <div class="sr sr-delay-1">
-        <p class="s-heading">Every piece begins<br>with intention.</p>
-        <p class="s-sub">Made to be felt</p>
+      <div class="cue" id="cue" aria-hidden="true">
+        <span class="cue-lbl">Scroll</span>
+        <div class="cue-line"></div>
+        <svg class="cue-arr" width="14" height="8" viewBox="0 0 14 8" fill="none">
+          <path d="M1 1L7 7L13 1" stroke="#C8A660" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ══════════════════════════════════════════════
-       SCROLL SECTION 2
-  ══════════════════════════════════════════════ -->
-  <section class="scroll-section" aria-label="Designed to be remembered">
-    <div class="s-inner">
-      <div class="sr sr-delay-1">
-        <p class="s-heading">Designed to be<br>remembered.</p>
-        <p class="s-sub">The art of the gift</p>
-      </div>
-    </div>
-  </section>
+    <section class="sect"><div class="sect-in"><div class="sr">
+      <p class="sh">Every piece begins<br>with intention.</p>
+      <p class="ss">Made to be felt</p>
+    </div></div></section>
+    <section class="sect"><div class="sect-in"><div class="sr">
+      <p class="sh">Designed to be<br>remembered.</p>
+      <p class="ss">The art of the gift</p>
+    </div></div></section>
+    <section class="sect"><div class="sect-in"><div class="sr">
+      <p class="sh">Moments deserve more.</p>
+      <span class="sg" aria-hidden="true"></span>
+      <p class="ss" style="margin-top:2.5rem">ZIROVA — Coming soon</p>
+    </div></div></section>
 
-  <!-- ══════════════════════════════════════════════
-       SCROLL SECTION 3
-  ══════════════════════════════════════════════ -->
-  <section class="scroll-section section-3" aria-label="Moments deserve more">
-    <div class="s-inner">
-      <div class="sr sr-delay-1">
-        <p class="s-heading">Moments deserve more.</p>
-        <span class="section-3-line" aria-hidden="true"></span>
-        <p class="s-sub" style="margin-top:2.8rem;">ZIROVA — Coming soon</p>
-      </div>
-    </div>
-  </section>
+    <footer class="foot" role="contentinfo"><p>© ZIROVA — All rights reserved</p></footer>
+  </div>
 
-  <!-- ══════════════════════════════════════════════
-       FOOTER
-  ══════════════════════════════════════════════ -->
-  <footer class="site-footer" role="contentinfo">
-    <p>© ZIROVA — All rights reserved</p>
-  </footer>
-
-  <!-- ══════════════════════════════════════════════
-       VANILLA JS
-  ══════════════════════════════════════════════ -->
   <script>
-  (function () {
+  (function(){
     'use strict';
+    const reduced = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+    const mobile  = innerWidth < 768 || 'ontouchstart' in window;
+    const TAU = Math.PI * 2;
+    const lerp = (a,b,t) => a+(b-a)*t;
+    const sin = Math.sin, cos = Math.cos;
 
-    const reduced  = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const mobile   = ('ontouchstart' in window) || window.innerWidth < 768;
+    /* ══════════════════════════════════════════════
+       LIVING BACKGROUND
+       
+       KEY INSIGHT: mid-teal #0E2F3A base so
+       bright teal+gold beams CONTRAST beautifully.
+       
+       Beam colors updated to balanced Zirova palette.
+    ══════════════════════════════════════════════ */
+    const cv  = document.getElementById('stage');
+    const ctx = cv.getContext('2d');
+    let W, H, T = 0;
+    const resize = ()=>{ W=cv.width=innerWidth; H=cv.height=innerHeight; };
+    resize(); addEventListener('resize',resize,{passive:true});
 
-    /* ── Util: lerp ─────────────────────────── */
-    const lerp = (a, b, t) => a + (b - a) * t;
-
-    /* ═══════════════════════════════════════
-       1. CINEMATIC INTRO
-    ═══════════════════════════════════════ */
-    if (!reduced) {
-      const items = document.querySelectorAll('.z-intro');
-      const line  = document.querySelector('.z-intro-line');
-      // Wordmark, tagline, status, divider, footer-copy, social
-      const delays = [80, 280, 460, 600, 780, 980];
-
-      items.forEach((el, i) => {
-        setTimeout(() => el.classList.add('go'), delays[i] ?? 900);
-      });
-      if (line) setTimeout(() => line.classList.add('go'), delays[3]);
-
-      // Show scroll cue after full intro
-      setTimeout(() => {
-        const cue = document.getElementById('scroll-cue');
-        if (cue) cue.classList.add('show');
-      }, 2400);
-    }
-
-    /* ═══════════════════════════════════════
-       2. CURSOR LIGHT
-    ═══════════════════════════════════════ */
-    if (!mobile && !reduced) {
-      const light = document.getElementById('cursor-light');
-      let cx = 0, cy = 0, lx = 0, ly = 0, visible = false;
-
-      document.addEventListener('mousemove', e => {
-        cx = e.clientX; cy = e.clientY;
-        if (!visible) { visible = true; light.style.opacity = '1'; }
-      });
-      document.addEventListener('mouseleave', () => {
-        visible = false; light.style.opacity = '0';
-      });
-
-      (function tick() {
-        lx = lerp(lx, cx, 0.06);
-        ly = lerp(ly, cy, 0.06);
-        light.style.left = lx + 'px';
-        light.style.top  = ly + 'px';
-        requestAnimationFrame(tick);
-      })();
-    }
-
-    /* ═══════════════════════════════════════
-       3. PARTICLE ATMOSPHERE
-    ═══════════════════════════════════════ */
-    const canvas = document.getElementById('particles');
-    const ctx    = canvas && canvas.getContext('2d');
-
-    if (ctx && !reduced) {
-      let W, H;
-      const COUNT = mobile ? 14 : 26;
-
-      const resize = () => {
-        W = canvas.width  = window.innerWidth;
-        H = canvas.height = window.innerHeight;
-      };
-      resize();
-      window.addEventListener('resize', resize, { passive: true });
-
-      const pts = Array.from({ length: COUNT }, () => ({
-        x:     Math.random() * window.innerWidth,
-        y:     Math.random() * window.innerHeight,
-        r:     Math.random() * 1.15 + 0.25,
-        vy:    Math.random() * 0.22 + 0.06,
-        vx:    (Math.random() - 0.5) * 0.12,
-        a:     Math.random() * 0.055 + 0.018,
-      }));
-
-      (function draw() {
-        ctx.clearRect(0, 0, W, H);
-        pts.forEach(p => {
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(243,241,236,${p.a})`;
-          ctx.fill();
-          p.y -= p.vy;
-          p.x += p.vx;
-          if (p.y < -6) { p.y = H + 6; p.x = Math.random() * W; }
-          if (p.x < -6 || p.x > W + 6) p.x = Math.random() * W;
-        });
-        requestAnimationFrame(draw);
-      })();
-    } else if (canvas) {
-      canvas.style.display = 'none';
-    }
-
-    /* ═══════════════════════════════════════
-       4. SCROLL REVEAL + SCROLL EFFECTS
-    ═══════════════════════════════════════ */
-    const srEls = document.querySelectorAll('.sr');
-    const divider = document.getElementById('hero-divider');
-    const scrollCue = document.getElementById('scroll-cue');
-    let dividerShimmered = false;
-    let bodyDeepened     = false;
-    let cueHidden        = false;
-
-    const io = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('on');
-          io.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.18, rootMargin: '0px 0px -50px 0px' });
-
-    srEls.forEach(el => io.observe(el));
-
-    window.addEventListener('scroll', () => {
-      const scrollPct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
-
-      // Hide scroll cue
-      if (!cueHidden && window.scrollY > 60) {
-        cueHidden = true;
-        if (scrollCue) { scrollCue.classList.remove('show'); scrollCue.classList.add('hide'); }
-      }
-
-      // At 40% scroll — deepen background once + shimmer divider once
-      if (!reduced && scrollPct >= 0.40) {
-        if (!bodyDeepened) {
-          bodyDeepened = true;
-          document.body.classList.add('scroll-deep');
-        }
-        if (!dividerShimmered && divider) {
-          dividerShimmered = true;
-          divider.classList.add('shimmer');
-          setTimeout(() => divider.classList.remove('shimmer'), 1200);
-        }
-      }
-    }, { passive: true });
-
-    /* ═══════════════════════════════════════
-       5. EASTER EGG — type Z I R O V A
-    ═══════════════════════════════════════ */
-    const seq  = ['z','i','r','o','v','a'];
-    let   idx  = 0;
-    let   timer = null;
-    const eggGlow    = document.getElementById('egg-glow');
-    const eggShimmer = document.getElementById('egg-shimmer');
-    const wordmark   = document.querySelector('.wordmark');
-
-    document.addEventListener('keydown', e => {
-      const k = e.key.toLowerCase();
-      if (k === seq[idx]) {
-        idx++;
-        clearTimeout(timer);
-        timer = setTimeout(() => { idx = 0; }, 2600);
-        if (idx === seq.length) { idx = 0; fireEgg(); }
-      } else {
-        idx = (k === seq[0]) ? 1 : 0;
-        clearTimeout(timer);
-      }
+    /* ── MOUSE PARALLAX (subtle depth) ── */
+    let mouseX = 0, mouseY = 0;
+    window.addEventListener('mousemove', e => {
+      // normalized offsets between -0.02 and 0.02 (very subtle)
+      mouseX = (e.clientX / W - 0.5) * 0.04;
+      mouseY = (e.clientY / H - 0.5) * 0.04;
     });
 
-    function fireEgg() {
-      if (reduced) return;
+    /* 🔥 Micro Camera Drift variables */
+    let camX = 0, camY = 0;
 
-      // Glow pulse
-      if (eggGlow) {
-        eggGlow.style.opacity = '1';
-        setTimeout(() => { eggGlow.style.opacity = '0'; }, 1400);
+    /* 
+      Sweeping light forms — wide radial blobs that 
+      orbit across the canvas on long slow cycles.
+      Colors are BRIGHT against the mid-teal base.
+      Each has unique speed + phase = never repeats.
+      
+      ✅ REPLACED with balanced Zirova palette
+    */
+    const sweeps = [
+      // Main Ocean Teal — smooth and elegant
+      {
+        ph: 0.0, sp: 0.000045,
+        orbitX: 0.40, orbitY: 0.32,
+        r: 0.60,
+        R: 22, G: 102, B: 130,
+        baseAlpha: 0.48
+      },
+      // Soft Blue-Teal depth
+      {
+        ph: 2.2, sp: 0.000032,
+        orbitX: 0.34, orbitY: 0.28,
+        r: 0.52,
+        R: 18, G: 88, B: 115,
+        baseAlpha: 0.42
+      },
+      // Atmospheric lift
+      {
+        ph: 4.0, sp: 0.000028,
+        orbitX: 0.30, orbitY: 0.38,
+        r: 0.55,
+        R: 28, G: 118, B: 145,
+        baseAlpha: 0.36
+      },
+      // Champagne glow (hero warmth)
+      {
+        ph: 1.3, sp: 0.000040,
+        orbitX: 0.28, orbitY: 0.22,
+        r: 0.32,
+        R: 198, G: 162, B: 96,
+        baseAlpha: 0.22
+      }
+    ];
+
+    function tick(){
+      T++;
+
+      /* 🔥 Camera drift — ultra‑slow cinematic movement */
+      const drift = T * 0.0002;
+      camX = Math.sin(drift) * 12;
+      camY = Math.cos(drift * 0.7) * 8;
+
+      ctx.save(); // save state before applying camera transform
+      ctx.translate(camX, camY);
+
+      ctx.clearRect(0,0,W,H); // clear after translation (covers whole canvas)
+
+      /* ── MID-TEAL BASE — the new foundation #0E2F3A ── */
+      ctx.fillStyle = '#0E2F3A';               // changed from #071624
+      ctx.fillRect(0,0,W,H);
+
+      /* ── SWEEPING LIGHT FORMS ──
+         Each orbits an elliptical path across canvas.
+         Brightness pulses so it visibly breathes.
+         Now with mouse parallax offsets. */
+      sweeps.forEach(s => {
+        const angle = T * s.sp + s.ph;
+
+        // Orbit center (always moving) + mouse parallax
+        const cx = (0.50 + sin(angle) * s.orbitX + mouseX) * W;
+        const cy = (0.50 + cos(angle * 0.68) * s.orbitY + mouseY) * H;
+
+        // Size breathes slightly
+        const r = s.r * Math.max(W, H) * (0.88 + 0.12 * sin(angle * 0.5));
+
+        // Brightness pulses — visibly oscillates
+        const pulse = 0.50 + 0.50 * sin(angle * 1.6 + s.ph * 0.3);
+        const alpha = s.baseAlpha * (0.55 + 0.85 * pulse);
+
+        ctx.save();
+        ctx.globalAlpha = alpha;
+
+        const g = ctx.createRadialGradient(cx, cy, 0, cx, cy, r);
+        g.addColorStop(0,    `rgba(${s.R},${s.G},${s.B},1.0)`);
+        g.addColorStop(0.28, `rgba(${s.R},${s.G},${s.B},0.65)`);
+        g.addColorStop(0.58, `rgba(${s.R},${s.G},${s.B},0.22)`);
+        g.addColorStop(1,    'transparent');
+
+        ctx.fillStyle = g;
+        ctx.fillRect(0, 0, W, H);
+        ctx.restore();
+      });
+
+      /* 🔥 Subtle Depth Blur Layer */
+      ctx.save();
+      ctx.globalAlpha = 0.05;
+      ctx.fillStyle = "#000";
+      ctx.filter = "blur(60px)";
+      ctx.fillRect(0, 0, W, H);
+      ctx.restore();
+      ctx.filter = "none"; // reset filter
+
+      /* ── SLOW DIRECTIONAL LIGHT SWEEP ── */
+      /* Creates a cinematic light beam moving diagonally */
+      const sweepAngle = T * 0.0006;
+      const sweepX = (0.5 + Math.sin(sweepAngle) * 0.6) * W;
+
+      const linear = ctx.createLinearGradient(
+        sweepX - W * 0.4,
+        0,
+        sweepX + W * 0.4,
+        H
+      );
+
+      linear.addColorStop(0, "transparent");
+      linear.addColorStop(0.45, "rgba(255,255,255,0.03)");
+      linear.addColorStop(0.5, "rgba(255,255,255,0.06)");
+      linear.addColorStop(0.55, "rgba(255,255,255,0.03)");
+      linear.addColorStop(1, "transparent");
+
+      ctx.fillStyle = linear;
+      ctx.fillRect(0, 0, W, H);
+
+      /* ── ULTRA‑RARE GOLD PULSE (every 5 seconds) ── */
+      const pulseInterval = 5000; // 5 seconds
+      const pulseDuration = 1200; // how long glow lasts
+
+      const now = performance.now();
+      const pulsePhase = now % pulseInterval;
+
+      if (pulsePhase < pulseDuration) {
+        const progress = pulsePhase / pulseDuration;
+
+        // smooth fade in + out
+        const opacity = Math.sin(progress * Math.PI) * 0.18;
+
+        ctx.save();
+        ctx.globalAlpha = opacity;
+
+        const pulse = ctx.createRadialGradient(
+          W / 2,
+          H / 2,
+          0,
+          W / 2,
+          H / 2,
+          Math.max(W, H) * 0.7
+        );
+
+        pulse.addColorStop(0, "rgba(198,162,96,0.9)");
+        pulse.addColorStop(1, "transparent");
+
+        ctx.fillStyle = pulse;
+        ctx.fillRect(0, 0, W, H);
+        ctx.restore();
       }
 
-      // Wordmark expand
-      if (wordmark) {
-        wordmark.classList.add('egg-active');
-        setTimeout(() => wordmark.classList.remove('egg-active'), 1500);
-      }
+      /* 🔥 Ultra‑Subtle Film Flicker */
+      const flicker = 0.985 + Math.random() * 0.02;
+      ctx.globalCompositeOperation = "overlay";
+      ctx.globalAlpha = 0.03;
+      ctx.fillStyle = `rgba(255,255,255,${1 - flicker})`;
+      ctx.fillRect(0, 0, W, H);
+      ctx.globalCompositeOperation = "source-over";
+      ctx.globalAlpha = 1;
 
-      // Gold sweep
-      if (eggShimmer) {
-        eggShimmer.classList.remove('sweep');
-        void eggShimmer.offsetWidth;
-        eggShimmer.classList.add('sweep');
-        setTimeout(() => eggShimmer.classList.remove('sweep'), 1700);
-      }
+      ctx.restore(); // restore from camera transform
+
+      requestAnimationFrame(tick);
     }
 
+    if(!reduced){ tick(); } else {
+      // Reduced motion: just a static nice gradient (using new base colors)
+      const g = ctx.createLinearGradient(0,0,W||800,H||600);
+      g.addColorStop(0,'#1A4A5A');
+      g.addColorStop(0.5,'#236B82');
+      g.addColorStop(1,'#2E8BA5');
+      ctx.fillStyle=g; ctx.fillRect(0,0,W||1920,H||1080);
+    }
+
+    /* ── DUST ── */
+    (function(){
+      const dv = document.getElementById('dust');
+      if(!dv||reduced){if(dv)dv.style.display='none';return;}
+      const dc = dv.getContext('2d');
+      let dW, dH;
+      const dr = ()=>{ dW=dv.width=innerWidth; dH=dv.height=innerHeight; };
+      dr(); addEventListener('resize',dr,{passive:true});
+      const N = mobile ? 8 : 22;
+      const pts = Array.from({length:N}, ()=>({
+        x: Math.random()*innerWidth,
+        y: Math.random()*innerHeight,
+        r: Math.random()*0.9+0.2,
+        vy: Math.random()*0.20+0.06,
+        vx: (Math.random()-0.5)*0.10,
+        a: Math.random()*0.06+0.02,
+        ap: Math.random()*TAU,
+        as: Math.random()*0.006+0.002
+      }));
+      (function dp(){
+        dc.clearRect(0,0,dW,dH);
+        pts.forEach(p=>{
+          p.ap += p.as;
+          const a = p.a*(0.45+0.55*sin(p.ap));
+          dc.beginPath(); dc.arc(p.x,p.y,p.r,0,TAU);
+          dc.fillStyle=`rgba(240,236,224,${a.toFixed(3)})`; dc.fill();
+          p.y-=p.vy; p.x+=p.vx;
+          if(p.y<-4){p.y=dH+4;p.x=Math.random()*dW;}
+          if(p.x<-4||p.x>dW+4) p.x=Math.random()*dW;
+        });
+        requestAnimationFrame(dp);
+      })();
+    })();
+
+    /* ── CURSOR ── */
+    if(!mobile&&!reduced){
+      const el=document.getElementById('cglow');
+      let mx=0,my=0,lx=0,ly=0,on=false;
+      document.addEventListener('mousemove',e=>{
+        mx=e.clientX;my=e.clientY;
+        if(!on){on=true;el.style.opacity='1';}
+      });
+      document.addEventListener('mouseleave',()=>{on=false;el.style.opacity='0';});
+      (function loop(){
+        lx=lerp(lx,mx,0.07); ly=lerp(ly,my,0.07);
+        el.style.left=lx+'px'; el.style.top=ly+'px';
+        requestAnimationFrame(loop);
+      })();
+    }
+
+    /* ── INTRO ── */
+    if(!reduced){
+      const ups = [...document.querySelectorAll('.fi')];
+      const ln  = document.querySelector('.fl');
+      const d   = [80,270,450,600,760,940];
+      ups.forEach((el,i)=>setTimeout(()=>el.classList.add('go'), d[i]??1000));
+      if(ln) setTimeout(()=>ln.classList.add('go'), d[3]);
+      setTimeout(()=>{ const c=document.getElementById('cue'); if(c)c.classList.add('show'); }, 2400);
+    }
+
+    /* ── SCROLL REVEALS ── */
+    document.querySelectorAll('.sr').forEach(el=>{
+      if(reduced){el.classList.add('on');return;}
+      new IntersectionObserver(en=>{
+        en.forEach(e=>{if(e.isIntersecting) e.target.classList.add('on');});
+      },{threshold:0.16}).observe(el);
+    });
+    let ch=false;
+    addEventListener('scroll',()=>{
+      if(!ch&&scrollY>80){
+        ch=true;
+        const c=document.getElementById('cue');
+        if(c){c.style.transition='opacity 500ms ease';c.style.opacity='0';}
+      }
+    },{passive:true});
+
+    /* ── EASTER EGG ── */
+    const seq=['z','i','r','o','v','a'];
+    let idx=0,tmr=null;
+    const eg=document.getElementById('egg-glow');
+    const es=document.getElementById('egg-sweep');
+    const wm=document.querySelector('.wm');
+    document.addEventListener('keydown',e=>{
+      const k=e.key.toLowerCase();
+      if(k===seq[idx]){
+        idx++; clearTimeout(tmr);
+        tmr=setTimeout(()=>idx=0,2800);
+        if(idx===seq.length){idx=0;fire();}
+      } else { idx=k===seq[0]?1:0; clearTimeout(tmr); }
+    });
+    function fire(){
+      if(reduced)return;
+      if(eg){eg.style.opacity='1';setTimeout(()=>eg.style.opacity='0',1500);}
+      if(wm){wm.classList.add('egg');setTimeout(()=>wm.classList.remove('egg'),1600);}
+      if(es){es.classList.remove('go');void es.offsetWidth;es.classList.add('go');setTimeout(()=>es.classList.remove('go'),1700);}
+    }
   })();
   </script>
-
 </body>
 </html>
