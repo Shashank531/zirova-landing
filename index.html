@@ -61,10 +61,10 @@
        DESIGN TOKENS
     ══════════════════════════════════════════════ */
     :root {
-      --bg-top:       #0F2F3A;
-      --bg-mid:       #174A57;
-      --bg-btm:       #2C6A7A;
-      --bg-deep:      #081E26;
+      --bg-top:       #0D3D4F;
+      --bg-mid:       #1A5568;
+      --bg-btm:       #2E7A8A;
+      --bg-deep:      #0A2E3D;
       --gold:         #C6A86B;
       --gold-glow:    rgba(198,168,107,0.10);
       --ivory:        #F3F1EC;
@@ -83,20 +83,34 @@
 
     body {
       min-height: 100vh;
-      background: linear-gradient(168deg, var(--bg-top) 0%, var(--bg-mid) 50%, var(--bg-btm) 100%);
-      background-attachment: fixed;
+      background: none;
       color: var(--ivory);
       font-family: 'Jost', 'Inter', system-ui, sans-serif;
       font-weight: 300;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       overflow-x: hidden;
-      transition: background 1.2s ease;
     }
 
-    body.scroll-deep {
-      background: linear-gradient(168deg, var(--bg-deep) 0%, #0F3040 50%, #1A4A5A 100%);
+    /* Single seamless background — fixed behind everything */
+    #bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background: linear-gradient(180deg, #1A4F62 0%, #255F72 45%, #337A8A 100%);
+      transition: opacity 1.4s ease;
     }
+
+    #bg-deep {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background: linear-gradient(180deg, #0F3545 0%, #1A4A58 50%, #245F6E 100%);
+      opacity: 0;
+      transition: opacity 1.4s ease;
+    }
+
+    body.scroll-deep #bg-deep { opacity: 1; }
 
     /* ══════════════════════════════════════════════
        ATMOSPHERIC FIXED LAYERS
@@ -254,6 +268,7 @@
       z-index: 5;
       text-align: center;
       padding: 6rem 2.5rem 5rem;
+      background: transparent;
     }
 
     /* ── Wordmark ── */
@@ -500,6 +515,7 @@
       min-height: 55vh;
       padding: 5.5rem 2.5rem;
       text-align: center;
+      background: transparent;
     }
 
     .s-inner { max-width: var(--max-w); width: 100%; }
@@ -617,6 +633,7 @@
       z-index: 5;
       text-align: center;
       padding: 0 2rem 4rem;
+      background: transparent;
     }
 
     .site-footer p {
@@ -648,6 +665,10 @@
 </head>
 
 <body>
+
+  <!-- ── Fixed seamless background ── -->
+  <div id="bg"      aria-hidden="true"></div>
+  <div id="bg-deep" aria-hidden="true"></div>
 
   <!-- ── Atmospheric fixed layers ── -->
   <div id="grain"         aria-hidden="true"></div>
