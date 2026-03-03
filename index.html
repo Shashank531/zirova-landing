@@ -14,7 +14,6 @@
 
     html, body {
       width:100%; min-height:100%; overflow-x:hidden;
-      /* CHANGED: base background to mid-teal #0E2F3A */
       background:#0E2F3A;
     }
 
@@ -24,26 +23,23 @@
       -webkit-font-smoothing:antialiased;
     }
 
-    /* Canvas — NO filter, NO overlay on top */
     #stage {
       position:fixed; inset:0; width:100%; height:100%; z-index:0;
     }
 
-    /* Grain — barely there */
     #grain {
       position:fixed; inset:0; z-index:1; pointer-events:none;
       background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.68' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23f)' opacity='0.035'/%3E%3C/svg%3E");
       background-size:200px 200px;
     }
 
-    /* Soft vignette — opacity reduced to 0.48 */
     #vig {
       position:fixed; inset:0; z-index:2; pointer-events:none;
       background:radial-gradient(
         ellipse 80% 78% at 50% 50%,
         transparent 40%,
         rgba(4,10,18,0.30) 72%,
-        rgba(3,8,16,0.48) 100%   /* changed from 0.62 to 0.48 */
+        rgba(3,8,16,0.48) 100%
       );
     }
 
@@ -61,7 +57,6 @@
     @keyframes eggSweep{0%{background-position:-120% 0;opacity:1;}85%{opacity:1;}100%{background-position:220% 0;opacity:0;}}
     #egg-sweep.go{animation:eggSweep 1500ms cubic-bezier(0.22,1,0.36,1) forwards;}
 
-    /* ── PAGE ── */
     .page { position:relative; z-index:10; display:flex; flex-direction:column; }
 
     .hero {
@@ -72,7 +67,6 @@
       position:relative;
     }
 
-    /* Intro */
     .fi { opacity:0; transform:translateY(14px); }
     .fl { opacity:0; transform:scaleX(0.06); transform-origin:center; }
     @keyframes fi { to { opacity:1; transform:translateY(0); } }
@@ -84,7 +78,6 @@
       #dust,#cglow{display:none;}
     }
 
-    /* ── WORDMARK — large, full white, strong shadow ── */
     .wm {
       font-family:'Tan Pearl','Cormorant Garamond',Georgia,serif;
       font-weight:300;
@@ -96,14 +89,13 @@
       margin-bottom:2.8rem;
       cursor:default;
       display:inline-block;
-      /* Glow shadow so it floats above anything */
       text-shadow:
         0 0 80px rgba(255,255,255,0.25),
         0 2px 20px rgba(5,14,26,0.80);
       transition:letter-spacing 800ms cubic-bezier(0.22,1,0.36,1),
                  text-indent    800ms cubic-bezier(0.22,1,0.36,1),
                  text-shadow    800ms ease,
-                 filter         800ms ease; /* added for smooth filter transition */
+                 filter         800ms ease;
     }
     .wm:hover {
       letter-spacing:18px; text-indent:18px;
@@ -111,7 +103,6 @@
         0 0 100px rgba(198,162,96,0.35),
         0 0 50px rgba(255,255,255,0.20),
         0 2px 20px rgba(5,14,26,0.80);
-      /* 🔥 Gold reaction on hover */
       filter: drop-shadow(0 0 25px rgba(198,162,96,0.4));
     }
     .wm.egg {
@@ -119,7 +110,6 @@
       text-shadow:0 0 140px rgba(198,162,96,0.60),0 2px 20px rgba(5,14,26,0.80)!important;
     }
 
-    /* ── TAGLINE — bigger, pure white ── */
     .tagline {
       font-family:'Cormorant Garamond',Georgia,serif;
       font-weight:300; font-style:italic;
@@ -130,7 +120,6 @@
       margin-bottom:1.8rem;
     }
 
-    /* ── STATUS — bigger, visible ── */
     .status {
       font-family:'Jost',system-ui,sans-serif;
       font-size:clamp(10px,2vw,13px); font-weight:400;
@@ -140,14 +129,12 @@
       margin-bottom:2.6rem;
     }
 
-    /* ── DIVIDER ── */
     .divider {
       width:72px; height:1px; border:none;
       background:linear-gradient(to right,transparent,#C8A660 20%,#C8A660 80%,transparent);
       margin:0 auto 2.6rem;
     }
 
-    /* ── HERO COPY — bigger ── */
     .hcopy {
       font-family:'Cormorant Garamond',Georgia,serif;
       font-style:italic; font-weight:300;
@@ -157,21 +144,36 @@
       letter-spacing:1.2px; margin-bottom:2.8rem;
     }
 
-    /* ── SOCIAL ── */
     .soc-wrap { display:flex; flex-direction:column; align-items:center; gap:1.3rem; }
     .soc-lbl  { font-family:'Jost',system-ui,sans-serif; font-size:10px; font-weight:400; letter-spacing:5px; text-transform:uppercase; color:#C8C0AE; }
     .soc-row  { display:flex; gap:3rem; align-items:center; }
+
+    /* Updated social icon styles (softer champagne) */
     .soc-a {
-      display:flex; flex-direction:column; align-items:center; gap:9px;
-      color:#C8A660; text-decoration:none; opacity:0.85;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:9px;
+      color:#F2D6A2; /* softer champagne */
+      text-decoration:none;
+      opacity:1;
       transition:opacity 350ms ease,filter 350ms ease,transform 350ms cubic-bezier(0.22,1,0.36,1);
     }
-    .soc-a:hover { opacity:1; filter:drop-shadow(0 0 12px rgba(200,166,96,0.50)); transform:translateY(-2px); }
+
+    .soc-a svg {
+      width:30px;
+      height:30px;
+      stroke-width:1.6;
+    }
+
+    .soc-a:hover {
+      filter:drop-shadow(0 0 18px rgba(198,162,96,0.65));
+      transform:translateY(-3px);
+    }
+
     .soc-a:focus-visible { outline:1px solid rgba(200,166,96,0.60); outline-offset:8px; }
-    .soc-a svg { width:26px; height:26px; fill:none; stroke:currentColor; stroke-width:1.3; stroke-linecap:round; stroke-linejoin:round; }
     .soc-n { font-family:'Jost',system-ui,sans-serif; font-size:8.5px; font-weight:300; letter-spacing:4px; text-transform:uppercase; color:#BDB6A6; }
 
-    /* ── SCROLL CUE ── */
     .cue { position:absolute; bottom:2rem; left:50%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:9px; opacity:0; transition:opacity 700ms ease; pointer-events:none; }
     .cue.show { opacity:1; }
     .cue-lbl  { font-family:'Jost',system-ui,sans-serif; font-size:10px; font-weight:400; letter-spacing:5px; text-transform:uppercase; color:#C8A660; }
@@ -182,7 +184,6 @@
     .cue.show .cue-line{animation:lP 2.2s ease-in-out infinite;}
     .cue.show .cue-arr {animation:aB 1.9s ease-in-out infinite;}
 
-    /* ── SCROLL SECTIONS ── */
     .sect { width:100%; min-height:60vh; display:flex; align-items:center; justify-content:center; padding:5rem 2.5rem; text-align:center; background:transparent; }
     .sect-in { max-width:580px; width:100%; }
     .sr { opacity:0; transform:translateY(22px); transition:opacity 1100ms cubic-bezier(0.22,1,0.36,1),transform 1100ms cubic-bezier(0.22,1,0.36,1); }
@@ -201,8 +202,69 @@
     .sg { display:block; width:0; height:1px; background:linear-gradient(to right,transparent,#C8A660,transparent); margin:1.8rem auto 0; transition:width 1300ms cubic-bezier(0.22,1,0.36,1) 200ms; }
     .sr.on .sg { width:90px; }
 
-    .foot { position:relative; z-index:10; text-align:center; padding:1rem 2rem 3rem; }
-    .foot p { font-size:9px; letter-spacing:3px; text-transform:uppercase; color:rgba(200,192,178,0.40); }
+    /* ===== NEW BOTTOM SOCIAL STYLES ===== */
+    .bottom-social {
+      display:flex;
+      justify-content:center;
+      gap:40px;
+      margin-bottom:28px;
+    }
+
+    .bottom-social a {
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      width:54px;
+      height:54px;
+      border-radius:50%;
+      background:rgba(198,162,96,0.08);
+      color:#F2D6A2;
+      transition:all 400ms cubic-bezier(0.22,1,0.36,1);
+    }
+
+    .bottom-social svg {
+      width:26px;
+      height:26px;
+      stroke:currentColor;
+      stroke-width:1.8;
+      fill:none;
+    }
+
+    .bottom-social a:hover {
+      transform:translateY(-6px) scale(1.08);
+      background:rgba(198,162,96,0.18);
+      box-shadow:
+        0 0 30px rgba(198,162,96,0.45),
+        0 0 60px rgba(198,162,96,0.25);
+    }
+
+    /* ===== CONTACT NUMBER (premium) ===== */
+    .contact {
+      font-family:'Jost',system-ui,sans-serif;
+      font-size:13px;
+      letter-spacing:6px;
+      text-transform:uppercase;
+      color:#F5E3BC;
+      margin-bottom:20px;
+      opacity:0.95;
+      text-shadow:
+        0 0 18px rgba(198,162,96,0.35);
+    }
+
+    /* ===== FOOTER COPYRIGHT (cleaner) ===== */
+    .foot p:last-child {
+      font-size:10px;
+      letter-spacing:4px;
+      text-transform:uppercase;
+      color:rgba(230,215,185,0.55);
+    }
+
+    .foot {
+      position:relative;
+      z-index:10;
+      text-align:center;
+      padding:2rem 2rem 3rem;
+    }
 
     @media(max-width:480px){
       .hero{padding:3.5rem 1.8rem;}
@@ -225,7 +287,7 @@
   <div class="page">
     <section class="hero" role="banner">
       <h1 class="wm fi" aria-label="ZIROVA">ZIROVA</h1>
-      <p class="tagline fi">Unwrap the extraordinary</p>  <!-- ✨ removed -->
+      <p class="tagline fi">Unwrap the extraordinary</p>
       <p class="status fi">Private&nbsp;Unveiling&nbsp;Soon</p>
       <hr class="divider fl" aria-hidden="true"/>
       <p class="hcopy fi">Crafted for meaningful moments.</p>
@@ -233,11 +295,20 @@
         <p class="soc-lbl">Enter our world.</p>
         <div class="soc-row">
           <a href="https://www.instagram.com/zirova.in/" class="soc-a" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-            <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5.5"/><circle cx="12" cy="12" r="4.4"/><circle cx="17.4" cy="6.6" r="0.95" fill="currentColor" stroke="none"/></svg>
+            <!-- NEW INSTAGRAM SVG (outline + filled dot) -->
+            <svg viewBox="0 0 24 24" fill="none">
+              <rect x="2" y="2" width="20" height="20" rx="5.5" stroke="currentColor"/>
+              <circle cx="12" cy="12" r="4.4" stroke="currentColor"/>
+              <circle cx="17.4" cy="6.6" r="1.2" fill="currentColor"/>
+            </svg>
             <span class="soc-n">Instagram</span>
           </a>
           <a href="https://www.youtube.com/@Zirova_Official" class="soc-a" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
-            <svg viewBox="0 0 24 24"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><polygon points="10,9 10,15.2 15.8,12" fill="currentColor" stroke="none"/></svg>
+            <!-- NEW YOUTUBE SVG (outline + filled play) -->
+            <svg viewBox="0 0 24 24" fill="none">
+              <rect x="2.5" y="5.5" width="19" height="13" rx="4" stroke="currentColor"/>
+              <polygon points="10,9 10,15.2 15.8,12" fill="currentColor"/>
+            </svg>
             <span class="soc-n">YouTube</span>
           </a>
         </div>
@@ -255,17 +326,38 @@
       <p class="sh">Every piece begins<br>with intention.</p>
       <p class="ss">Made to be felt</p>
     </div></div></section>
+
     <section class="sect"><div class="sect-in"><div class="sr">
       <p class="sh">Designed to be<br>remembered.</p>
-      <p class="ss">The art of the gift</p>
+      <p class="ss">Where moments become memories</p>
     </div></div></section>
+
     <section class="sect"><div class="sect-in"><div class="sr">
-      <p class="sh">Moments deserve more.</p>
+      <p class="sh">Where moments become memories.</p>
       <span class="sg" aria-hidden="true"></span>
       <p class="ss" style="margin-top:2.5rem">ZIROVA — Coming soon</p>
     </div></div></section>
 
-    <footer class="foot" role="contentinfo"><p>© ZIROVA — All rights reserved</p></footer>
+    <!-- New footer with premium social icons -->
+    <footer class="foot" role="contentinfo">
+      <div class="bottom-social">
+        <a href="https://www.instagram.com/zirova.in/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <svg viewBox="0 0 24 24">
+            <rect x="2" y="2" width="20" height="20" rx="5.5"/>
+            <circle cx="12" cy="12" r="4.4"/>
+            <circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"/>
+          </svg>
+        </a>
+        <a href="https://www.youtube.com/@Zirova_Official" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+          <svg viewBox="0 0 24 24">
+            <rect x="2.5" y="5.5" width="19" height="13" rx="4"/>
+            <polygon points="10,9 10,15.2 15.8,12" fill="currentColor" stroke="none"/>
+          </svg>
+        </a>
+      </div>
+      <p class="contact">+91 7506847892</p>
+      <p>© ZIROVA — All rights reserved</p>
+    </footer>
   </div>
 
   <script>
@@ -277,41 +369,21 @@
     const lerp = (a,b,t) => a+(b-a)*t;
     const sin = Math.sin, cos = Math.cos;
 
-    /* ══════════════════════════════════════════════
-       LIVING BACKGROUND
-       
-       KEY INSIGHT: mid-teal #0E2F3A base so
-       bright teal+gold beams CONTRAST beautifully.
-       
-       Beam colors updated to balanced Zirova palette.
-    ══════════════════════════════════════════════ */
     const cv  = document.getElementById('stage');
     const ctx = cv.getContext('2d');
     let W, H, T = 0;
     const resize = ()=>{ W=cv.width=innerWidth; H=cv.height=innerHeight; };
     resize(); addEventListener('resize',resize,{passive:true});
 
-    /* ── MOUSE PARALLAX (subtle depth) ── */
     let mouseX = 0, mouseY = 0;
     window.addEventListener('mousemove', e => {
-      // normalized offsets between -0.02 and 0.02 (very subtle)
       mouseX = (e.clientX / W - 0.5) * 0.04;
       mouseY = (e.clientY / H - 0.5) * 0.04;
     });
 
-    /* 🔥 Micro Camera Drift variables */
     let camX = 0, camY = 0;
 
-    /* 
-      Sweeping light forms — wide radial blobs that 
-      orbit across the canvas on long slow cycles.
-      Colors are BRIGHT against the mid-teal base.
-      Each has unique speed + phase = never repeats.
-      
-      ✅ REPLACED with balanced Zirova palette
-    */
     const sweeps = [
-      // Main Ocean Teal — smooth and elegant
       {
         ph: 0.0, sp: 0.000045,
         orbitX: 0.40, orbitY: 0.32,
@@ -319,7 +391,6 @@
         R: 22, G: 102, B: 130,
         baseAlpha: 0.48
       },
-      // Soft Blue-Teal depth
       {
         ph: 2.2, sp: 0.000032,
         orbitX: 0.34, orbitY: 0.28,
@@ -327,7 +398,6 @@
         R: 18, G: 88, B: 115,
         baseAlpha: 0.42
       },
-      // Atmospheric lift
       {
         ph: 4.0, sp: 0.000028,
         orbitX: 0.30, orbitY: 0.38,
@@ -335,7 +405,6 @@
         R: 28, G: 118, B: 145,
         baseAlpha: 0.36
       },
-      // Champagne glow (hero warmth)
       {
         ph: 1.3, sp: 0.000040,
         orbitX: 0.28, orbitY: 0.22,
@@ -348,35 +417,26 @@
     function tick(){
       T++;
 
-      /* 🔥 Camera drift — ultra‑slow cinematic movement */
       const drift = T * 0.0002;
       camX = Math.sin(drift) * 12;
       camY = Math.cos(drift * 0.7) * 8;
 
-      ctx.save(); // save state before applying camera transform
+      ctx.save();
       ctx.translate(camX, camY);
 
-      ctx.clearRect(0,0,W,H); // clear after translation (covers whole canvas)
+      ctx.clearRect(0,0,W,H);
 
-      /* ── MID-TEAL BASE — the new foundation #0E2F3A ── */
-      ctx.fillStyle = '#0E2F3A';               // changed from #071624
+      ctx.fillStyle = '#0E2F3A';
       ctx.fillRect(0,0,W,H);
 
-      /* ── SWEEPING LIGHT FORMS ──
-         Each orbits an elliptical path across canvas.
-         Brightness pulses so it visibly breathes.
-         Now with mouse parallax offsets. */
       sweeps.forEach(s => {
         const angle = T * s.sp + s.ph;
 
-        // Orbit center (always moving) + mouse parallax
         const cx = (0.50 + sin(angle) * s.orbitX + mouseX) * W;
         const cy = (0.50 + cos(angle * 0.68) * s.orbitY + mouseY) * H;
 
-        // Size breathes slightly
         const r = s.r * Math.max(W, H) * (0.88 + 0.12 * sin(angle * 0.5));
 
-        // Brightness pulses — visibly oscillates
         const pulse = 0.50 + 0.50 * sin(angle * 1.6 + s.ph * 0.3);
         const alpha = s.baseAlpha * (0.55 + 0.85 * pulse);
 
@@ -394,17 +454,14 @@
         ctx.restore();
       });
 
-      /* 🔥 Subtle Depth Blur Layer */
       ctx.save();
       ctx.globalAlpha = 0.05;
       ctx.fillStyle = "#000";
       ctx.filter = "blur(60px)";
       ctx.fillRect(0, 0, W, H);
       ctx.restore();
-      ctx.filter = "none"; // reset filter
+      ctx.filter = "none";
 
-      /* ── SLOW DIRECTIONAL LIGHT SWEEP ── */
-      /* Creates a cinematic light beam moving diagonally */
       const sweepAngle = T * 0.0006;
       const sweepX = (0.5 + Math.sin(sweepAngle) * 0.6) * W;
 
@@ -424,17 +481,13 @@
       ctx.fillStyle = linear;
       ctx.fillRect(0, 0, W, H);
 
-      /* ── ULTRA‑RARE GOLD PULSE (every 5 seconds) ── */
-      const pulseInterval = 5000; // 5 seconds
-      const pulseDuration = 1200; // how long glow lasts
-
+      const pulseInterval = 5000;
+      const pulseDuration = 1200;
       const now = performance.now();
       const pulsePhase = now % pulseInterval;
 
       if (pulsePhase < pulseDuration) {
         const progress = pulsePhase / pulseDuration;
-
-        // smooth fade in + out
         const opacity = Math.sin(progress * Math.PI) * 0.18;
 
         ctx.save();
@@ -457,7 +510,6 @@
         ctx.restore();
       }
 
-      /* 🔥 Ultra‑Subtle Film Flicker */
       const flicker = 0.985 + Math.random() * 0.02;
       ctx.globalCompositeOperation = "overlay";
       ctx.globalAlpha = 0.03;
@@ -466,13 +518,12 @@
       ctx.globalCompositeOperation = "source-over";
       ctx.globalAlpha = 1;
 
-      ctx.restore(); // restore from camera transform
+      ctx.restore();
 
       requestAnimationFrame(tick);
     }
 
     if(!reduced){ tick(); } else {
-      // Reduced motion: just a static nice gradient (using new base colors)
       const g = ctx.createLinearGradient(0,0,W||800,H||600);
       g.addColorStop(0,'#1A4A5A');
       g.addColorStop(0.5,'#236B82');
@@ -480,7 +531,6 @@
       ctx.fillStyle=g; ctx.fillRect(0,0,W||1920,H||1080);
     }
 
-    /* ── DUST ── */
     (function(){
       const dv = document.getElementById('dust');
       if(!dv||reduced){if(dv)dv.style.display='none';return;}
@@ -514,7 +564,6 @@
       })();
     })();
 
-    /* ── CURSOR ── */
     if(!mobile&&!reduced){
       const el=document.getElementById('cglow');
       let mx=0,my=0,lx=0,ly=0,on=false;
@@ -530,7 +579,6 @@
       })();
     }
 
-    /* ── INTRO ── */
     if(!reduced){
       const ups = [...document.querySelectorAll('.fi')];
       const ln  = document.querySelector('.fl');
@@ -540,7 +588,6 @@
       setTimeout(()=>{ const c=document.getElementById('cue'); if(c)c.classList.add('show'); }, 2400);
     }
 
-    /* ── SCROLL REVEALS ── */
     document.querySelectorAll('.sr').forEach(el=>{
       if(reduced){el.classList.add('on');return;}
       new IntersectionObserver(en=>{
@@ -556,7 +603,6 @@
       }
     },{passive:true});
 
-    /* ── EASTER EGG ── */
     const seq=['z','i','r','o','v','a'];
     let idx=0,tmr=null;
     const eg=document.getElementById('egg-glow');
