@@ -21,7 +21,6 @@ function initReveal() {
   const els = $$('.fade');
   if (!els.length) return;
 
-  // Use IntersectionObserver for scroll-triggered reveals too
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -39,7 +38,6 @@ function initReveal() {
   );
 
   els.forEach((el, i) => {
-    // Assign stagger delay if not already set manually
     if (!el.dataset.delay) {
       el.dataset.delay = i * ZIROVA.animStagger;
     }
@@ -65,54 +63,12 @@ function initSmoothScroll() {
   });
 }
 
-/* ─── 3. CURSOR GLOW ─── */
-function initCursorGlow() {
-  if ('ontouchstart' in window) return;
-  const glow = $('#cglow');
-  if (!glow) return;
-
-  let mouseX = -200, mouseY = -200;
-  let currentX = -200, currentY = -200;
-  let rafId;
-
-  // Lerp for silky trailing motion
-  function lerp(a, b, t) {
-    return a + (b - a) * t;
-  }
-
-  function animate() {
-    currentX = lerp(currentX, mouseX, 0.1);
-    currentY = lerp(currentY, mouseY, 0.1);
-    glow.style.transform = `translate(${currentX}px, ${currentY}px) translate(-50%, -50%)`;
-    rafId = requestAnimationFrame(animate);
-  }
-
-  document.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-  });
-
-  // Pause when mouse leaves viewport
-  document.addEventListener('mouseleave', () => cancelAnimationFrame(rafId));
-  document.addEventListener('mouseenter', () => { rafId = requestAnimationFrame(animate); });
-
-  // Scale on hover over interactive elements
-  const interactiveEls = $$('a, button, [data-hover]');
-  interactiveEls.forEach((el) => {
-    el.addEventListener('mouseenter', () => glow.classList.add('cursor-glow--hover'));
-    el.addEventListener('mouseleave', () => glow.classList.remove('cursor-glow--hover'));
-  });
-
-  rafId = requestAnimationFrame(animate);
-}
-
-/* ─── 4. COPY PHONE NUMBER ─── */
+/* ─── 3. COPY PHONE NUMBER ─── */
 function copyNumber() {
   navigator.clipboard
     .writeText(ZIROVA.phone)
     .then(() => showToast('Number copied'))
     .catch(() => {
-      // Fallback for older browsers
       const tmp = document.createElement('input');
       tmp.value = ZIROVA.phone;
       document.body.appendChild(tmp);
@@ -123,9 +79,8 @@ function copyNumber() {
     });
 }
 
-/* ─── 5. TOAST NOTIFICATION (replaces alert) ─── */
+/* ─── 4. TOAST NOTIFICATION (replaces alert) ─── */
 function showToast(message, duration = 2800) {
-  // Remove existing toast if any
   const existing = $('.zirova-toast');
   if (existing) existing.remove();
 
@@ -157,7 +112,6 @@ function showToast(message, duration = 2800) {
 
   document.body.appendChild(toast);
 
-  // Trigger animation
   requestAnimationFrame(() => {
     requestAnimationFrame(() => {
       toast.style.opacity = '1';
@@ -172,7 +126,7 @@ function showToast(message, duration = 2800) {
   }, duration);
 }
 
-/* ─── 6. HEADER SCROLL STATE ─── */
+/* ─── 5. HEADER SCROLL STATE ─── */
 function initHeader() {
   const header = $('header') || $('.header') || $('.nav');
   if (!header) return;
@@ -184,10 +138,8 @@ function initHeader() {
     () => {
       const current = window.scrollY;
 
-      // Add scrolled class after 60px
       header.classList.toggle('header--scrolled', current > 60);
 
-      // Hide on scroll down, reveal on scroll up (> 400px from top)
       if (current > 400) {
         header.classList.toggle('header--hidden', current > lastScroll);
       } else {
@@ -200,7 +152,7 @@ function initHeader() {
   );
 }
 
-/* ─── 7. PARALLAX (lightweight, opt-in) ─── */
+/* ─── 6. PARALLAX (lightweight, opt-in) ─── */
 function initParallax() {
   const els = $$('[data-parallax]');
   if (!els.length) return;
@@ -222,7 +174,7 @@ function initParallax() {
   }, { passive: true });
 }
 
-/* ─── 8. MARQUEE PAUSE ON HOVER ─── */
+/* ─── 7. MARQUEE PAUSE ON HOVER ─── */
 function initMarquee() {
   $$('.marquee, [data-marquee]').forEach((el) => {
     el.addEventListener('mouseenter', () => (el.style.animationPlayState = 'paused'));
@@ -230,7 +182,7 @@ function initMarquee() {
   });
 }
 
-/* ─── 9. MAGNETIC BUTTONS (subtle luxury pull) ─── */
+/* ─── 8. MAGNETIC BUTTONS (subtle luxury pull) ─── */
 function initMagnetic() {
   $$('[data-magnetic]').forEach((btn) => {
     btn.style.willChange = 'transform';
@@ -249,7 +201,7 @@ function initMagnetic() {
   });
 }
 
-/* ─── 10. CONSOLE EASTER EGG ─── */
+/* ─── 9. CONSOLE EASTER EGG ─── */
 function initConsole() {
   const gold = 'color: #c9b38a; font-weight: 300; letter-spacing: 0.2em;';
   const dim  = 'color: #5a4f3e; font-size: 10px; letter-spacing: 0.1em;';
@@ -265,7 +217,6 @@ function initConsole() {
 document.addEventListener('DOMContentLoaded', () => {
   initReveal();
   initSmoothScroll();
-  initCursorGlow();
   initHeader();
   initParallax();
   initMarquee();
