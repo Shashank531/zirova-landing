@@ -1,4 +1,4 @@
-/* ================================
+// your code goes here/* ================================
    ZIROVA — Luxury Interaction Script
    Refined · Deliberate · Premium
    ================================ */
@@ -52,7 +52,6 @@ function initSmoothScroll() {
       const target = $(this.getAttribute('href'));
       if (!target) return;
       e.preventDefault();
-
       const top =
         target.getBoundingClientRect().top +
         window.scrollY -
