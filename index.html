@@ -18,7 +18,8 @@
   <link rel="canonical" href="https://zirova.in">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="icon" type="image/png" href="/favicon.png?v=2">
+  <link rel="shortcut icon" href="/favicon.png?v=2">
 
   <!-- Theme color -->
   <meta name="theme-color" content="#0b0b0b">
@@ -30,7 +31,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400&display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
   <style>
     *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
 
@@ -101,7 +101,7 @@
     }
 
     .wm {
-      font-family:'Tan Pearl','Cormorant Garamond',Georgia,serif;
+      font-family:'Cormorant Garamond',Georgia,serif;
       font-weight:300;
       font-size:clamp(58px,14vw,118px);
       letter-spacing:12px; text-indent:12px;
@@ -170,13 +170,12 @@
     .soc-lbl  { font-family:'Jost',system-ui,sans-serif; font-size:10px; font-weight:400; letter-spacing:5px; text-transform:uppercase; color:#C8C0AE; }
     .soc-row  { display:flex; gap:3rem; align-items:center; }
 
-    /* Updated social icon styles (softer champagne) */
     .soc-a {
       display:flex;
       flex-direction:column;
       align-items:center;
       gap:9px;
-      color:#F2D6A2; /* softer champagne */
+      color:#F2D6A2;
       text-decoration:none;
       opacity:1;
       transition:opacity 350ms ease,filter 350ms ease,transform 350ms cubic-bezier(0.22,1,0.36,1);
@@ -224,7 +223,6 @@
     .sg { display:block; width:0; height:1px; background:linear-gradient(to right,transparent,#C8A660,transparent); margin:1.8rem auto 0; transition:width 1300ms cubic-bezier(0.22,1,0.36,1) 200ms; }
     .sr.on .sg { width:90px; }
 
-    /* ===== NEW BOTTOM SOCIAL STYLES ===== */
     .bottom-social {
       display:flex;
       justify-content:center;
@@ -260,7 +258,6 @@
         0 0 60px rgba(198,162,96,0.25);
     }
 
-    /* ===== CONTACT NUMBER (premium) ===== */
     .contact {
       font-family:'Jost',system-ui,sans-serif;
       font-size:13px;
@@ -273,7 +270,6 @@
         0 0 18px rgba(198,162,96,0.35);
     }
 
-    /* ===== FOOTER COPYRIGHT (cleaner) ===== */
     .foot p:last-child {
       font-size:10px;
       letter-spacing:4px;
@@ -317,7 +313,6 @@
         <p class="soc-lbl">Enter our world.</p>
         <div class="soc-row">
           <a href="https://www.instagram.com/zirova.in/" class="soc-a" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-            <!-- NEW INSTAGRAM SVG (outline + filled dot) -->
             <svg viewBox="0 0 24 24" fill="none">
               <rect x="2" y="2" width="20" height="20" rx="5.5" stroke="currentColor"/>
               <circle cx="12" cy="12" r="4.4" stroke="currentColor"/>
@@ -326,7 +321,6 @@
             <span class="soc-n">Instagram</span>
           </a>
           <a href="https://www.youtube.com/@Zirova_Official" class="soc-a" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
-            <!-- NEW YOUTUBE SVG (outline + filled play) -->
             <svg viewBox="0 0 24 24" fill="none">
               <rect x="2.5" y="5.5" width="19" height="13" rx="4" stroke="currentColor"/>
               <polygon points="10,9 10,15.2 15.8,12" fill="currentColor"/>
@@ -360,7 +354,6 @@
       <p class="ss" style="margin-top:2.5rem">ZIROVA — Coming soon</p>
     </div></div></section>
 
-    <!-- New footer with premium social icons -->
     <footer class="foot" role="contentinfo">
       <div class="bottom-social">
         <a href="https://www.instagram.com/zirova.in/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
@@ -406,76 +399,40 @@
     let camX = 0, camY = 0;
 
     const sweeps = [
-      {
-        ph: 0.0, sp: 0.000045,
-        orbitX: 0.40, orbitY: 0.32,
-        r: 0.60,
-        R: 22, G: 102, B: 130,
-        baseAlpha: 0.48
-      },
-      {
-        ph: 2.2, sp: 0.000032,
-        orbitX: 0.34, orbitY: 0.28,
-        r: 0.52,
-        R: 18, G: 88, B: 115,
-        baseAlpha: 0.42
-      },
-      {
-        ph: 4.0, sp: 0.000028,
-        orbitX: 0.30, orbitY: 0.38,
-        r: 0.55,
-        R: 28, G: 118, B: 145,
-        baseAlpha: 0.36
-      },
-      {
-        ph: 1.3, sp: 0.000040,
-        orbitX: 0.28, orbitY: 0.22,
-        r: 0.32,
-        R: 198, G: 162, B: 96,
-        baseAlpha: 0.22
-      }
+      { ph: 0.0, sp: 0.000045, orbitX: 0.40, orbitY: 0.32, r: 0.60, R: 22, G: 102, B: 130, baseAlpha: 0.48 },
+      { ph: 2.2, sp: 0.000032, orbitX: 0.34, orbitY: 0.28, r: 0.52, R: 18, G: 88, B: 115, baseAlpha: 0.42 },
+      { ph: 4.0, sp: 0.000028, orbitX: 0.30, orbitY: 0.38, r: 0.55, R: 28, G: 118, B: 145, baseAlpha: 0.36 },
+      { ph: 1.3, sp: 0.000040, orbitX: 0.28, orbitY: 0.22, r: 0.32, R: 198, G: 162, B: 96, baseAlpha: 0.22 }
     ];
 
     function tick(){
       T++;
-
       const drift = T * 0.0002;
       camX = Math.sin(drift) * 12;
       camY = Math.cos(drift * 0.7) * 8;
-
       ctx.save();
       ctx.translate(camX, camY);
-
       ctx.clearRect(0,0,W,H);
-
       ctx.fillStyle = '#0E2F3A';
       ctx.fillRect(0,0,W,H);
-
       sweeps.forEach(s => {
         const angle = T * s.sp + s.ph;
-
         const cx = (0.50 + sin(angle) * s.orbitX + mouseX) * W;
         const cy = (0.50 + cos(angle * 0.68) * s.orbitY + mouseY) * H;
-
         const r = s.r * Math.max(W, H) * (0.88 + 0.12 * sin(angle * 0.5));
-
         const pulse = 0.50 + 0.50 * sin(angle * 1.6 + s.ph * 0.3);
         const alpha = s.baseAlpha * (0.55 + 0.85 * pulse);
-
         ctx.save();
         ctx.globalAlpha = alpha;
-
         const g = ctx.createRadialGradient(cx, cy, 0, cx, cy, r);
         g.addColorStop(0,    `rgba(${s.R},${s.G},${s.B},1.0)`);
         g.addColorStop(0.28, `rgba(${s.R},${s.G},${s.B},0.65)`);
         g.addColorStop(0.58, `rgba(${s.R},${s.G},${s.B},0.22)`);
         g.addColorStop(1,    'transparent');
-
         ctx.fillStyle = g;
         ctx.fillRect(0, 0, W, H);
         ctx.restore();
       });
-
       ctx.save();
       ctx.globalAlpha = 0.05;
       ctx.fillStyle = "#000";
@@ -483,55 +440,32 @@
       ctx.fillRect(0, 0, W, H);
       ctx.restore();
       ctx.filter = "none";
-
       const sweepAngle = T * 0.0006;
       const sweepX = (0.5 + Math.sin(sweepAngle) * 0.6) * W;
-
-      const linear = ctx.createLinearGradient(
-        sweepX - W * 0.4,
-        0,
-        sweepX + W * 0.4,
-        H
-      );
-
+      const linear = ctx.createLinearGradient(sweepX - W * 0.4, 0, sweepX + W * 0.4, H);
       linear.addColorStop(0, "transparent");
       linear.addColorStop(0.45, "rgba(255,255,255,0.03)");
       linear.addColorStop(0.5, "rgba(255,255,255,0.06)");
       linear.addColorStop(0.55, "rgba(255,255,255,0.03)");
       linear.addColorStop(1, "transparent");
-
       ctx.fillStyle = linear;
       ctx.fillRect(0, 0, W, H);
-
       const pulseInterval = 5000;
       const pulseDuration = 1200;
       const now = performance.now();
       const pulsePhase = now % pulseInterval;
-
       if (pulsePhase < pulseDuration) {
         const progress = pulsePhase / pulseDuration;
         const opacity = Math.sin(progress * Math.PI) * 0.18;
-
         ctx.save();
         ctx.globalAlpha = opacity;
-
-        const pulse = ctx.createRadialGradient(
-          W / 2,
-          H / 2,
-          0,
-          W / 2,
-          H / 2,
-          Math.max(W, H) * 0.7
-        );
-
+        const pulse = ctx.createRadialGradient(W/2, H/2, 0, W/2, H/2, Math.max(W,H)*0.7);
         pulse.addColorStop(0, "rgba(198,162,96,0.9)");
         pulse.addColorStop(1, "transparent");
-
         ctx.fillStyle = pulse;
         ctx.fillRect(0, 0, W, H);
         ctx.restore();
       }
-
       const flicker = 0.985 + Math.random() * 0.02;
       ctx.globalCompositeOperation = "overlay";
       ctx.globalAlpha = 0.03;
@@ -539,9 +473,7 @@
       ctx.fillRect(0, 0, W, H);
       ctx.globalCompositeOperation = "source-over";
       ctx.globalAlpha = 1;
-
       ctx.restore();
-
       requestAnimationFrame(tick);
     }
 
@@ -646,6 +578,5 @@
     }
   })();
   </script>
-  <script src="script.js"></script>
 </body>
 </html>
