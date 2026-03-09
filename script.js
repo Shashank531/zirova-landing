@@ -67,6 +67,7 @@ function initSmoothScroll() {
 
 /* ─── 3. CURSOR GLOW ─── */
 function initCursorGlow() {
+  if ('ontouchstart' in window) return;
   const glow = $('#cglow');
   if (!glow) return;
 
@@ -204,17 +205,21 @@ function initParallax() {
   const els = $$('[data-parallax]');
   if (!els.length) return;
 
-  window.addEventListener(
-    'scroll',
-    () => {
-      const scrollY = window.scrollY;
-      els.forEach((el) => {
-        const speed = parseFloat(el.dataset.parallax) || 0.3;
-        el.style.transform = `translate3d(0, ${scrollY * speed}px, 0)`;
+  let ticking = false;
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        const scrollY = window.scrollY;
+        els.forEach((el) => {
+          const speed = parseFloat(el.dataset.parallax) || 0.3;
+          el.style.transform = `translate3d(0, ${scrollY * speed}px, 0)`;
+        });
+        ticking = false;
       });
-    },
-    { passive: true }
-  );
+      ticking = true;
+    }
+  }, { passive: true });
 }
 
 /* ─── 8. MARQUEE PAUSE ON HOVER ─── */
