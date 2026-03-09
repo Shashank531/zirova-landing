@@ -22,7 +22,9 @@
   <link rel="shortcut icon" href="/favicon.png?v=2">
 
   <!-- Theme color -->
-  <meta name="theme-color" content="#0b0b0b">
+  <meta name="theme-color" content="#0E2F3A">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
   <!-- Font preload -->
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400&display=swap" as="style">
@@ -33,6 +35,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+
+    html {
+      background:#0E2F3A;
+    }
 
     html, body {
       width:100%; min-height:100%; overflow-x:hidden;
@@ -58,10 +64,10 @@
     #vig {
       position:fixed; inset:0; z-index:2; pointer-events:none;
       background:radial-gradient(
-        ellipse 80% 78% at 50% 50%,
-        transparent 40%,
-        rgba(4,10,18,0.30) 72%,
-        rgba(3,8,16,0.48) 100%
+        ellipse 100% 90% at 50% 50%,
+        transparent 55%,
+        rgba(4,10,18,0.18) 80%,
+        rgba(3,8,16,0.28) 100%
       );
     }
 
@@ -284,6 +290,47 @@
       padding:2rem 2rem 3rem;
     }
 
+    /* ===== NAVBAR ===== */
+    .navbar {
+      position:fixed;
+      top:0; left:0; right:0;
+      z-index:20;
+      display:flex;
+      align-items:center;
+      padding:1.4rem 2.4rem;
+      pointer-events:none;
+    }
+
+    .nav-logo {
+      height:28px;
+      width:auto;
+      opacity:0;
+      filter:brightness(0) invert(1) drop-shadow(0 0 12px rgba(198,162,96,0.3));
+      transition:opacity 600ms ease, filter 600ms ease;
+      pointer-events:all;
+    }
+
+    .nav-logo.show {
+      opacity:0.88;
+    }
+
+    .nav-logo:hover {
+      opacity:1;
+      filter:brightness(0) invert(1) drop-shadow(0 0 18px rgba(198,162,96,0.55));
+    }
+
+    /* ===== FOOTER LOGO ===== */
+    .foot-logo {
+      height:22px;
+      width:auto;
+      opacity:0.35;
+      filter:brightness(0) invert(1);
+      margin-bottom:22px;
+      display:block;
+      margin-left:auto;
+      margin-right:auto;
+    }
+
     @media(max-width:480px){
       .hero{padding:3.5rem 1.8rem;}
       .wm{letter-spacing:8px;text-indent:8px;font-size:clamp(48px,13vw,100px);}
@@ -301,6 +348,10 @@
   <div    id="cglow" aria-hidden="true"></div>
   <div    id="egg-glow"  aria-hidden="true"></div>
   <div    id="egg-sweep" aria-hidden="true"></div>
+
+  <nav class="navbar" aria-label="Zirova">
+    <img src="zirova_logo.png" alt="Zirova" class="nav-logo" id="navLogo"/>
+  </nav>
 
   <div class="page">
     <section class="hero" role="banner">
@@ -355,6 +406,7 @@
     </div></div></section>
 
     <footer class="foot" role="contentinfo">
+      <img src="zirova_logo.png" alt="Zirova" class="foot-logo"/>
       <div class="bottom-social">
         <a href="https://www.instagram.com/zirova.in/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
           <svg viewBox="0 0 24 24">
@@ -556,6 +608,12 @@
         if(c){c.style.transition='opacity 500ms ease';c.style.opacity='0';}
       }
     },{passive:true});
+
+    // Fade in nav logo after hero loads
+    setTimeout(()=>{
+      const nl = document.getElementById('navLogo');
+      if(nl) nl.classList.add('show');
+    }, 1200);
 
     const seq=['z','i','r','o','v','a'];
     let idx=0,tmr=null;
