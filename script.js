@@ -7,7 +7,7 @@
 
 /* ─── CONFIG ─── */
 const ZIROVA = {
-  phone: '+91XXXXXXXXXX',
+  phone: '+917506847892',
   animStagger: 160,
   scrollOffset: 80,
 };
@@ -67,7 +67,7 @@ function initSmoothScroll() {
 
 /* ─── 3. CURSOR GLOW ─── */
 function initCursorGlow() {
-  const glow = $('.cursor-glow');
+  const glow = $('#cglow');
   if (!glow) return;
 
   let mouseX = -200, mouseY = -200;
@@ -210,7 +210,7 @@ function initParallax() {
       const scrollY = window.scrollY;
       els.forEach((el) => {
         const speed = parseFloat(el.dataset.parallax) || 0.3;
-        el.style.transform = `translateY(${scrollY * speed}px)`;
+        el.style.transform = `translate3d(0, ${scrollY * speed}px, 0)`;
       });
     },
     { passive: true }
@@ -228,6 +228,7 @@ function initMarquee() {
 /* ─── 9. MAGNETIC BUTTONS (subtle luxury pull) ─── */
 function initMagnetic() {
   $$('[data-magnetic]').forEach((btn) => {
+    btn.style.willChange = 'transform';
     btn.addEventListener('mousemove', (e) => {
       const rect = btn.getBoundingClientRect();
       const x = e.clientX - rect.left - rect.width / 2;
