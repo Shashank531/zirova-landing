@@ -27,11 +27,11 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
   <!-- Font preload -->
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400&display=swap" as="style">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;600&display=swap" as="style">
 
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;600&display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
@@ -177,18 +177,18 @@
       position:relative;
       display:inline-flex;
       align-items:center;
-      gap:12px;
-      padding:16px 38px;
-      margin-bottom:1.1rem;
+      gap:16px;
+      padding:21px 54px;
+      margin-bottom:1.2rem;
       font-family:'Jost',system-ui,sans-serif;
-      font-size:12px; font-weight:400;
-      letter-spacing:4px; text-transform:uppercase;
+      font-size:14.5px; font-weight:600;
+      letter-spacing:4.5px; text-transform:uppercase;
       color:#0E2F3A;
       background:linear-gradient(135deg,#F2D6A2 0%,#C8A660 55%,#B4924D 100%);
       border-radius:2px;
       text-decoration:none;
       overflow:hidden;
-      box-shadow:0 6px 30px rgba(198,162,96,0.30), 0 1px 0 rgba(255,255,255,0.4) inset;
+      box-shadow:0 10px 42px rgba(198,162,96,0.42), 0 1px 0 rgba(255,255,255,0.45) inset;
       transition:transform 400ms cubic-bezier(0.22,1,0.36,1), box-shadow 400ms ease;
     }
     .shop-cta::before {
@@ -201,12 +201,12 @@
     }
     .shop-cta:hover {
       transform:translateY(-3px);
-      box-shadow:0 10px 40px rgba(198,162,96,0.45), 0 1px 0 rgba(255,255,255,0.5) inset;
+      box-shadow:0 14px 55px rgba(198,162,96,0.58), 0 1px 0 rgba(255,255,255,0.5) inset;
     }
     .shop-cta:hover::before { background-position:-50% 0; }
     .shop-cta:focus-visible { outline:1px solid #F2D6A2; outline-offset:6px; }
     .shop-cta span { position:relative; z-index:1; }
-    .shop-cta svg { position:relative; z-index:1; width:15px; height:15px; }
+    .shop-cta svg { position:relative; z-index:1; width:18px; height:18px; }
 
     .shop-sub {
       font-family:'Jost',system-ui,sans-serif;
@@ -474,6 +474,8 @@
       .wm{letter-spacing:8px;text-indent:8px;font-size:clamp(48px,13vw,100px);}
       .status{letter-spacing:4px;}
       .sect{min-height:50vh;padding:4rem 1.8rem;}
+      .shop-cta{padding:17px 34px; font-size:12px; letter-spacing:3px; gap:11px;}
+      .shop-cta svg{width:15px; height:15px;}
     }
     @media(max-width:360px){ .wm{font-size:40px;} }
   </style>
