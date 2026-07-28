@@ -986,7 +986,8 @@
       const elS = document.getElementById('rbS');
       if(!wrap || !elD) return;
       const boxS = document.getElementById('rbBoxS');
-      const target = new Date('2026-08-28T00:00:00+05:30').getTime();
+      // Raksha Bandhan auspicious morning time: 28 Aug 2026, 05:57 AM IST (UTC+05:30).
+      const target = new Date('2026-08-28T05:57:00+05:30').getTime();
       const pad = n => String(n).padStart(2,'0');
       let lastS = -1;
       function update(){
