@@ -1,2 +1,2 @@
 # zirova-landing
-Official launching soon page for Zirova.
+Official launching page for Zirova.
